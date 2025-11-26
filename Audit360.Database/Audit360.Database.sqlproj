@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>Audit360.Database</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{79fabc9c-db79-4a81-8a7f-95807f0dba46}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql170DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>Audit360.Database</RootNamespace>
+    <AssemblyName>Audit360.Database</AssemblyName>
+    <ModelCollation>1033, CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Script.LookupData.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="usp_Audit_Create.sql" />
+    <Build Include="usp_Audit_GetById.sql" />
+    <Build Include="usp_Audit_GetList.sql" />
+    <Build Include="usp_Audit_Update.sql" />
+    <Build Include="usp_Audit_Delete.sql" />
+    <Build Include="usp_Responsible_Create.sql" />
+    <Build Include="usp_Responsible_GetById.sql" />
+    <Build Include="usp_Responsible_GetList.sql" />
+    <Build Include="usp_Responsible_Update.sql" />
+    <Build Include="usp_Responsible_Delete.sql" />
+    <Build Include="usp_Finding_Create.sql" />
+    <Build Include="usp_Finding_GetById.sql" />
+    <Build Include="usp_Finding_GetList.sql" />
+    <Build Include="usp_Finding_Update.sql" />
+    <Build Include="usp_Finding_Delete.sql" />
+    <Build Include="usp_FollowUp_Create.sql" />
+    <Build Include="usp_FollowUp_GetById.sql" />
+    <Build Include="usp_FollowUp_GetList.sql" />
+    <Build Include="usp_FollowUp_Update.sql" />
+    <Build Include="usp_FollowUp_Delete.sql" />
+    <Build Include="usp_AuditStatus_Create.sql" />
+    <Build Include="usp_AuditStatus_GetList.sql" />
+    <Build Include="usp_AuditStatus_Update.sql" />
+    <Build Include="usp_AuditStatus_Delete.sql" />
+    <Build Include="usp_FindingSeverity_Create.sql" />
+    <Build Include="usp_FindingSeverity_GetList.sql" />
+    <Build Include="usp_FindingSeverity_Update.sql" />
+    <Build Include="usp_FindingSeverity_Delete.sql" />
+    <Build Include="usp_FindingType_Create.sql" />
+    <Build Include="usp_FindingType_GetList.sql" />
+    <Build Include="usp_FindingType_Update.sql" />
+    <Build Include="usp_FindingType_Delete.sql" />
+    <Build Include="usp_FollowUpStatus_Create.sql" />
+    <Build Include="usp_FollowUpStatus_GetList.sql" />
+    <Build Include="usp_FollowUpStatus_Update.sql" />
+    <Build Include="usp_FollowUpStatus_Delete.sql" />
+    <Build Include="usp_Role_Create.sql" />
+    <Build Include="usp_Role_GetList.sql" />
+    <Build Include="usp_Role_Update.sql" />
+    <Build Include="usp_Role_Delete.sql" />
+    <Build Include="usp_User_Create.sql" />
+    <Build Include="usp_User_GetById.sql" />
+    <Build Include="usp_User_GetList.sql" />
+    <Build Include="usp_User_Update.sql" />
+    <Build Include="usp_User_Delete.sql" />
+    <Build Include="usp_AuditStatus_GetById.sql" />
+    <Build Include="usp_FindingSeverity_GetById.sql" />
+    <Build Include="usp_FindingType_GetById.sql" />
+    <Build Include="usp_FollowUpStatus_GetById.sql" />
+    <Build Include="usp_Role_GetById.sql" />
+    <Build Include="vw_AuditFinalizedSummary.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="_ScriptIncludeList.txt" />
+    <None Include="_ViewsIncludeList.txt" />
+  </ItemGroup>
+</Project>

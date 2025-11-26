@@ -5,6 +5,12 @@
     <Project Path="Audit360.Domain/Audit360.Domain.csproj" />
     <Project Path="Audit360.Infrastructure/Audit360.Infrastructure.csproj" />
   </Folder>
+  <Folder Name="/Database/">
+    <Project Path="Audit360.Database/Audit360.Database.sqlproj" Id="79fabc9c-db79-4a81-8a7f-95807f0dba46">
+      <Build />
+      <Deploy />
+    </Project>
+  </Folder>
   <Folder Name="/Test/">
     <Project Path="Audit360.IntegrationTests/Audit360.IntegrationTests.csproj" />
     <Project Path="Audit360.UnitTests/Audit360.UnitTests.csproj" />
