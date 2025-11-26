@@ -27,7 +27,10 @@ namespace Audit360.Domain.Entities
         public bool IsActive { get; set; } = true;
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
+        [Required(ErrorMessage = "El id del rol es obligatorio")]
+        public required int RoleId { get; set; }
+
         // Relationships
-        public ICollection<Role> Roles { get; set; } = new List<Role>();
+        public required Role Role { get; set; }
     }
 }

@@ -4,16 +4,16 @@ GO
 
 CREATE OR ALTER PROCEDURE dbo.usp_FollowUp_Create
     @Description NVARCHAR(3000),
-    @ResponsibleId INT,
-    @DueDate DATETIME2,
-    @AuditId INT,
+    @CommitmentDate DATETIME2,
+    @StatusId INT,
+    @FindingId INT,
     @NewId INT OUTPUT
 AS
 BEGIN
     SET NOCOUNT ON;
     BEGIN TRY
-        INSERT INTO dbo.FollowUps (Description, ResponsibleId, DueDate, AuditId)
-        VALUES (@Description, @ResponsibleId, @DueDate, @AuditId);
+        INSERT INTO dbo.FollowUps (Description, StatusId, CommitmentDate, FindingId)
+        VALUES (@Description, @StatusId, @CommitmentDate, @FindingId);
 
         SET @NewId = CAST(SCOPE_IDENTITY() AS INT);
     END TRY

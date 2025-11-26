@@ -281,6 +281,9 @@ namespace Audit360.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Username")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -291,25 +294,9 @@ namespace Audit360.Infrastructure.Migrations
                     b.HasIndex("Email")
                         .IsUnique();
 
-                    b.HasIndex("Username")
-                        .IsUnique();
+                    b.HasIndex("RoleId");
 
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("UserRole", b =>
-                {
-                    b.Property<int>("RoleId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("RoleId", "UserId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("UserRole");
                 });
 
             modelBuilder.Entity("Audit360.Domain.Entities.Audit", b =>
@@ -377,19 +364,15 @@ namespace Audit360.Infrastructure.Migrations
                     b.Navigation("Status");
                 });
 
-            modelBuilder.Entity("UserRole", b =>
+            modelBuilder.Entity("Audit360.Domain.Entities.User", b =>
                 {
-                    b.HasOne("Audit360.Domain.Entities.Role", null)
-                        .WithMany()
+                    b.HasOne("Audit360.Domain.Entities.Role", "Role")
+                        .WithMany("Users")
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Audit360.Domain.Entities.User", null)
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Navigation("Role");
                 });
 
             modelBuilder.Entity("Audit360.Domain.Entities.Audit", b =>
@@ -405,6 +388,11 @@ namespace Audit360.Infrastructure.Migrations
             modelBuilder.Entity("Audit360.Domain.Entities.Responsible", b =>
                 {
                     b.Navigation("Audits");
+                });
+
+            modelBuilder.Entity("Audit360.Domain.Entities.Role", b =>
+                {
+                    b.Navigation("Users");
                 });
 #pragma warning restore 612, 618
         }

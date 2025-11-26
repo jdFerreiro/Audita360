@@ -15,6 +15,10 @@ builder.Services.AddDbContext<Audit360DbContext>(options =>
 // Password service
 builder.Services.AddSingleton<IPasswordService, BcryptPasswordService>();
 
+// Register user services/repositories
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IUserService, UserService>();
+
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 

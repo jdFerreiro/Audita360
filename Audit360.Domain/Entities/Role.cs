@@ -17,6 +17,6 @@ namespace Audit360.Domain.Entities
         public string? Description { get; set; }
 
         // Relationships
-        public ICollection<User> Users { get; set; } = new List<User>();
+        public ICollection<User> Users { get; set; } = [];
     }
 }

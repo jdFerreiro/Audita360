@@ -3,12 +3,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Audit360.Infrastructure.Data
 {
-    public class Audit360DbContext : DbContext
+    public class Audit360DbContext(DbContextOptions<Audit360DbContext> options) : DbContext(options)
     {
-        public Audit360DbContext(DbContextOptions<Audit360DbContext> options) : base(options)
-        {
-        }
-
         public DbSet<Responsible> Responsibles { get; set; } = null!;
         public DbSet<Audit> Audits { get; set; } = null!;
         public DbSet<Finding> Findings { get; set; } = null!;
@@ -26,19 +22,9 @@ namespace Audit360.Infrastructure.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            // Configure many-to-many between User and Role with explicit join table name
-            modelBuilder.Entity<User>()
-                .HasMany(u => u.Roles)
-                .WithMany(r => r.Users)
-                .UsingEntity<Dictionary<string, object>>("UserRole",
-                    ur => ur.HasOne<Role>().WithMany().HasForeignKey("RoleId"),
-                    ur => ur.HasOne<User>().WithMany().HasForeignKey("UserId")
-                );
-
             // Optional: set max lengths and indexes
             modelBuilder.Entity<User>(b =>
             {
-                b.HasIndex(u => u.Username).IsUnique();
                 b.HasIndex(u => u.Email).IsUnique();
                 b.Property(u => u.Username).HasMaxLength(100);
                 b.Property(u => u.Email).HasMaxLength(200);

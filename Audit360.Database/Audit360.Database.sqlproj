@@ -23,6 +23,7 @@
     <IncludeCompositeObjects>True</IncludeCompositeObjects>
     <TargetDatabaseSet>True</TargetDatabaseSet>
     <TargetFrameworkProfile />
+    <GenerateCreateScript>True</GenerateCreateScript>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\Release\</OutputPath>
@@ -45,7 +46,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <WarningLevel>0</WarningLevel>
     <PlatformTarget>ARM64</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup>
@@ -62,10 +63,12 @@
     <Folder Include="Scripts\Store Procedures" />
     <Folder Include="Scripts\Seed Data" />
     <Folder Include="Scripts\Views" />
+    <Folder Include="Scripts\Post-Deployment" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\Store Procedures\usp_Audit_Create.sql" />
-    <PostDeploy Include="Scripts\Seed Data\Script.LookupData.sql" />
+    <None Include="Scripts\Seed Data\Script.LookupData.sql" />
+    <None Include="Audit360.Database.publish.xml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />
@@ -216,5 +219,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\Store Procedures\usp_AuditStatus_Delete.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Scripts\Post-Deployment\Deploy_All.sql" />
   </ItemGroup>
 </Project>

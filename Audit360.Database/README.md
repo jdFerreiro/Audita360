@@ -23,25 +23,14 @@ A continuación se describen formas habituales de desplegar los scripts.
   2. Abrir el proyecto `Audit360.Database`.
   3. Click derecho en el proyecto -> `Publish`.
   4. Configurar la conexión de destino (servidor y base de datos) y las opciones de publicación.
-  5. Ejecutar `Publish` para desplegar el `.dacpac` o los scripts.
-
-- SQL Server Management Studio (SSMS):
-  1. Conectar al servidor destino.
-  2. Abrir cada archivo `.sql` en el orden recomendado.
-  3. Ejecutar los scripts o usar la opción `SQLCMD Mode` para scripts con variables.
-
-- Línea de comandos con `sqlcmd` (ejemplo):
-  `sqlcmd -S <servidor> -d <base_datos> -U <usuario> -P <contraseña> -i <ruta_al_script>.sql`
-
-- Despliegue con `SqlPackage` usando `.dacpac` (ejemplo):
-  `SqlPackage /Action:Publish /SourceFile:<ruta>.dacpac /TargetServerName:<servidor> /TargetDatabaseName:<base_datos> /TargetUser:<usuario> /TargetPassword:<contraseña>`
-
-## Variables y configuración
-- Revisar si los scripts usan variables (p. ej. `SQLCMD` variables) y definirlas al ejecutar.
-- Para entornos (Dev/Test/Prod) mantener ficheros de configuración o perfiles de publicación separados.
-
-## Recomendaciones y buenas prácticas
-- Ejecutar los scripts en una base de datos de pruebas antes de producción.
-- Agrupar cambios y versionarlos en el control de código.
-- Hacer copias de seguridad antes de ejecutar en entornos productivos.
-- Ejecutar los `seed` solo cuando se requiera; evitar duplicados con comprobaciones `IF NOT EXISTS`.
+  5. Ejecutar `Generate Script`.
+  6. Eliminar todas las instrucciones que defines las variables (p. ej. `:setvar`).
+  7. Cambiar la línea que tiene USE [$(DatabaseName)]; por USE [Audita360]; o el nombre de la base de datos destino.
+  8. Reemplaza los GO; por GO.
+  9. Abre una nueva consulta en SSMS.
+  10. Copia el contenido actualizado a la consulta en SSMS.
+  11. Ejecuta el script en SSMS.
+  12. Verifica que todo se haya ejecutado correctamente.
+	1. Revisa los mensajes de salida en SSMS para detectar errores.
+	2. Consulta las tablas que tengan los datos correctos.
+	3. Verifica la existencia de procedimientos y vistas creadas.
