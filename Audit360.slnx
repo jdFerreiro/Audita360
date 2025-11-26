@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/API/">
+    <Project Path="Audit360.API/Audit360.API.csproj" />
+    <Project Path="Audit360.Application/Audit360.Application.csproj" />
+    <Project Path="Audit360.Domain/Audit360.Domain.csproj" />
+    <Project Path="Audit360.Infrastructure/Audit360.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/Test/">
+    <Project Path="Audit360.IntegrationTests/Audit360.IntegrationTests.csproj" />
+    <Project Path="Audit360.UnitTests/Audit360.UnitTests.csproj" />
+  </Folder>
+</Solution>
