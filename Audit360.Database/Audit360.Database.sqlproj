@@ -56,65 +56,165 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
+    <Folder Include="Scripts" />
+    <Folder Include="Scripts\Store Procedures" />
+    <Folder Include="Scripts\Seed Data" />
+    <Folder Include="Scripts\Views" />
+    <Folder Include="Procedimientos Almacenados\" />
   </ItemGroup>
   <ItemGroup>
-    <PostDeploy Include="Script.LookupData.sql" />
+    <Build Include="Procedimientos Almacenados\usp_Audit_GetById.sql" />
+    <None Include="Scripts\Store Procedures\usp_Audit_Create.sql" />
+    <PostDeploy Include="Scripts\Seed Data\Script.LookupData.sql" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="usp_Audit_Create.sql" />
-    <Build Include="usp_Audit_GetById.sql" />
-    <Build Include="usp_Audit_GetList.sql" />
-    <Build Include="usp_Audit_Update.sql" />
-    <Build Include="usp_Audit_Delete.sql" />
-    <Build Include="usp_Responsible_Create.sql" />
-    <Build Include="usp_Responsible_GetById.sql" />
-    <Build Include="usp_Responsible_GetList.sql" />
-    <Build Include="usp_Responsible_Update.sql" />
-    <Build Include="usp_Responsible_Delete.sql" />
-    <Build Include="usp_Finding_Create.sql" />
-    <Build Include="usp_Finding_GetById.sql" />
-    <Build Include="usp_Finding_GetList.sql" />
-    <Build Include="usp_Finding_Update.sql" />
-    <Build Include="usp_Finding_Delete.sql" />
-    <Build Include="usp_FollowUp_Create.sql" />
-    <Build Include="usp_FollowUp_GetById.sql" />
-    <Build Include="usp_FollowUp_GetList.sql" />
-    <Build Include="usp_FollowUp_Update.sql" />
-    <Build Include="usp_FollowUp_Delete.sql" />
-    <Build Include="usp_AuditStatus_Create.sql" />
-    <Build Include="usp_AuditStatus_GetList.sql" />
-    <Build Include="usp_AuditStatus_Update.sql" />
-    <Build Include="usp_AuditStatus_Delete.sql" />
-    <Build Include="usp_FindingSeverity_Create.sql" />
-    <Build Include="usp_FindingSeverity_GetList.sql" />
-    <Build Include="usp_FindingSeverity_Update.sql" />
-    <Build Include="usp_FindingSeverity_Delete.sql" />
-    <Build Include="usp_FindingType_Create.sql" />
-    <Build Include="usp_FindingType_GetList.sql" />
-    <Build Include="usp_FindingType_Update.sql" />
-    <Build Include="usp_FindingType_Delete.sql" />
-    <Build Include="usp_FollowUpStatus_Create.sql" />
-    <Build Include="usp_FollowUpStatus_GetList.sql" />
-    <Build Include="usp_FollowUpStatus_Update.sql" />
-    <Build Include="usp_FollowUpStatus_Delete.sql" />
-    <Build Include="usp_Role_Create.sql" />
-    <Build Include="usp_Role_GetList.sql" />
-    <Build Include="usp_Role_Update.sql" />
-    <Build Include="usp_Role_Delete.sql" />
-    <Build Include="usp_User_Create.sql" />
-    <Build Include="usp_User_GetById.sql" />
-    <Build Include="usp_User_GetList.sql" />
-    <Build Include="usp_User_Update.sql" />
-    <Build Include="usp_User_Delete.sql" />
-    <Build Include="usp_AuditStatus_GetById.sql" />
-    <Build Include="usp_FindingSeverity_GetById.sql" />
-    <Build Include="usp_FindingType_GetById.sql" />
-    <Build Include="usp_FollowUpStatus_GetById.sql" />
-    <Build Include="usp_Role_GetById.sql" />
-    <Build Include="vw_AuditFinalizedSummary.sql" />
+    <None Include="README.md" />
+    <None Include="Scripts\Store Procedures\usp_Audit_Delete.sql" />
+    <None Include="Scripts\Views\_ViewsIncludeList.txt" />
+    <None Include="Scripts\Store Procedures\_StoredProceduresList.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="_ScriptIncludeList.txt" />
-    <None Include="_ViewsIncludeList.txt" />
+    <None Include="Scripts\Views\vw_AuditFinalizedSummary.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Store Procedures\usp_AuditStatus_Create.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Store Procedures\usp_User_Update.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Store Procedures\usp_User_GetList.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Store Procedures\usp_User_GetById.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Store Procedures\usp_User_Delete.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Store Procedures\usp_User_Create.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Store Procedures\usp_Role_Update.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Store Procedures\usp_Role_GetList.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Store Procedures\usp_Role_GetById.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Store Procedures\usp_Role_Delete.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Store Procedures\usp_Role_Create.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Store Procedures\usp_Responsible_Update.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Store Procedures\usp_Responsible_GetList.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Store Procedures\usp_Responsible_GetById.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Store Procedures\usp_Responsible_Delete.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Store Procedures\usp_Responsible_Create.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Store Procedures\usp_FollowUp_Update.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Store Procedures\usp_FollowUp_GetList.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Store Procedures\usp_FollowUp_GetById.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Store Procedures\usp_FollowUp_Delete.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Store Procedures\usp_FollowUp_Create.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Store Procedures\usp_FollowUpStatus_Update.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Store Procedures\usp_FollowUpStatus_GetList.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Store Procedures\usp_FollowUpStatus_Delete.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Store Procedures\usp_FollowUpStatus_Create.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Store Procedures\usp_Finding_Update.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Store Procedures\usp_Finding_GetList.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Store Procedures\usp_Finding_GetById.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Store Procedures\usp_Finding_Delete.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Store Procedures\usp_Finding_Create.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Store Procedures\usp_FindingType_Update.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Store Procedures\usp_FindingType_GetList.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Store Procedures\usp_FindingType_GetById.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Store Procedures\usp_FindingType_Delete.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Store Procedures\usp_FindingType_Create.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Store Procedures\usp_FindingSeverity_Update.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Store Procedures\usp_FindingSeverity_GetList.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Store Procedures\usp_FindingSeverity_GetById.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Store Procedures\usp_FindingSeverity_Delete.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Store Procedures\usp_FindingSeverity_Create.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Store Procedures\usp_Audit_Update.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Store Procedures\usp_Audit_GetList.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Store Procedures\usp_Audit_GetById.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Store Procedures\usp_AuditStatus_Update.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Store Procedures\usp_AuditStatus_GetList.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Store Procedures\usp_AuditStatus_GetById.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Store Procedures\usp_AuditStatus_Delete.sql" />
   </ItemGroup>
 </Project>
