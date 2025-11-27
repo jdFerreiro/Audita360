@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using MediatR;
 using Audit360.Application.Features.FindingSeverities.Queries;
 using Audit360.Application.Features.FindingSeverities.Commands;
@@ -8,6 +9,7 @@ namespace Audit360.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize]
     public class FindingSeveritiesController : ControllerBase
     {
         private readonly IMediator _mediator;

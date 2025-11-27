@@ -3,6 +3,7 @@ using Audit360.Domain.Entities;
 using Audit360.Infrastructure.Data;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using System.Data;
 
 namespace Audit360.Infrastructure.Repositories.Write
 {
@@ -13,8 +14,18 @@ namespace Audit360.Infrastructure.Repositories.Write
 
         public async Task CreateAsync(AuditStatus entity)
         {
-            var p = new SqlParameter("@Description", entity.Description);
-            await _db.Database.ExecuteSqlRawAsync("EXEC usp_AuditStatus_Create @Description", p);
+            var newIdParam = new SqlParameter("@NewId", SqlDbType.Int)
+            {
+                Direction = ParameterDirection.Output
+            };
+
+            var parameters = new[] { new SqlParameter("@Description", entity.Description), newIdParam };
+            await _db.Database.ExecuteSqlRawAsync("EXEC usp_AuditStatus_Create @Description, @NewId OUTPUT", parameters);
+
+            if (newIdParam.Value != DBNull.Value && newIdParam.Value != null)
+            {
+                entity.Id = Convert.ToInt32(newIdParam.Value);
+            }
         }
 
         public async Task UpdateAsync(AuditStatus entity)

@@ -34,7 +34,7 @@ namespace Audit360.Application.Behaviors
                 }
             }
 
-            return await next();
+            return await next(cancellationToken);
         }
     }
 }

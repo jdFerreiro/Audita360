@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using MediatR;
 using Audit360.Application.Features.FollowUps.Queries;
 using Audit360.Application.Features.FollowUps.Commands;
@@ -8,6 +9,7 @@ namespace Audit360.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize]
     public class FollowUpsController : ControllerBase
     {
         private readonly IMediator _mediator;

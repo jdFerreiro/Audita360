@@ -11,7 +11,6 @@ using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using Microsoft.OpenApi;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -102,30 +101,8 @@ builder.Services.AddAuthentication(options =>
 
 builder.Services.AddAuthorization();
 
-// Swagger: registration with Bearer security and XML comments using Microsoft.OpenApi root types
-builder.Services.AddSwaggerGen(c =>
-{
-    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-    {
-        Description = "JWT Bearer. Example: Bearer {token}",
-        Name = "Authorization",
-        In = ParameterLocation.Header,
-        Type = SecuritySchemeType.Http,
-        Scheme = "bearer",
-        BearerFormat = "JWT"
-    });
-
-    // Key must be OpenApiSecuritySchemeReference; value is list of scopes.
-    var bearerRef = new OpenApiSecuritySchemeReference("Bearer");
-    var securityRequirement = new OpenApiSecurityRequirement
-    {
-        {
-            bearerRef,
-            new List<string>() // empty scopes for JWT Bearer
-        }
-    };
-
-});
+// Swagger: basic registration
+builder.Services.AddSwaggerGen();
 
 builder.Services.AddEndpointsApiExplorer();
 
@@ -139,6 +116,9 @@ app.UseHttpsRedirection();
 
 // Use middleware for validation exceptions
 app.UseMiddleware<ValidationExceptionMiddleware>();
+
+// Added database exception middleware
+app.UseMiddleware<DatabaseExceptionMiddleware>();
 
 // Authentication & Authorization
 app.UseAuthentication();

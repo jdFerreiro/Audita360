@@ -3,6 +3,7 @@ using Audit360.Domain.Entities;
 using Audit360.Infrastructure.Data;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using System.Data;
 
 namespace Audit360.Infrastructure.Repositories.Write
 {
@@ -13,16 +14,27 @@ namespace Audit360.Infrastructure.Repositories.Write
 
         public async Task CreateAsync(Finding entity)
         {
+            var newIdParam = new SqlParameter("@NewId", SqlDbType.Int)
+            {
+                Direction = ParameterDirection.Output
+            };
+
             var parameters = new[]
             {
                 new SqlParameter("@Description", entity.Description),
                 new SqlParameter("@TypeId", entity.Type?.Id ?? 0),
                 new SqlParameter("@SeverityId", entity.Severity?.Id ?? 0),
                 new SqlParameter("@Date", entity.Date),
-                new SqlParameter("@AuditId", entity.AuditId)
+                new SqlParameter("@AuditId", entity.AuditId),
+                newIdParam
             };
 
-            await _db.Database.ExecuteSqlRawAsync("EXEC usp_Finding_Create @Description, @TypeId, @SeverityId, @Date, @AuditId", parameters);
+            await _db.Database.ExecuteSqlRawAsync("EXEC usp_Finding_Create @Description, @TypeId, @SeverityId, @Date, @AuditId, @NewId OUTPUT", parameters);
+
+            if (newIdParam.Value != DBNull.Value && newIdParam.Value != null)
+            {
+                entity.Id = Convert.ToInt32(newIdParam.Value);
+            }
         }
 
         public async Task UpdateAsync(Finding entity)
