@@ -9,7 +9,7 @@ using AutoMapper;
 
 namespace Audit360.Application.Features.FollowUpStatuses.Handlers
 {
-    public class FollowUpStatusCommandHandler : IRequestHandler<CreateFollowUpStatusCommand>, IRequestHandler<UpdateFollowUpStatusCommand>, IRequestHandler<DeleteFollowUpStatusCommand>
+    public class FollowUpStatusCommandHandler : IRequestHandler<CreateFollowUpStatusCommand, Unit>, IRequestHandler<UpdateFollowUpStatusCommand, Unit>, IRequestHandler<DeleteFollowUpStatusCommand, Unit>
     {
         private readonly IFollowUpStatusWriteRepository _writeRepo;
         private readonly IMapper _mapper;

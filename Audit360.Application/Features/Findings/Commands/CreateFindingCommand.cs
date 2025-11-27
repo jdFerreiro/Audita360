@@ -7,5 +7,5 @@ namespace Audit360.Application.Features.Findings.Commands
     /// Comando para crear un hallazgo.
     /// </summary>
     /// <param name="Finding">Datos del hallazgo a crear.</param>
-    public record CreateFindingCommand(FindingWriteDto Finding) : IRequest;
+    public record CreateFindingCommand(FindingWriteDto Finding) : IRequest<MediatR.Unit>;
 }

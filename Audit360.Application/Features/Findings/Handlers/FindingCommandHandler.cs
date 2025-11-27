@@ -9,7 +9,7 @@ using AutoMapper;
 
 namespace Audit360.Application.Features.Findings.Handlers
 {
-    public class FindingCommandHandler : IRequestHandler<CreateFindingCommand>, IRequestHandler<UpdateFindingCommand>, IRequestHandler<DeleteFindingCommand>
+    public class FindingCommandHandler : IRequestHandler<CreateFindingCommand, Unit>, IRequestHandler<UpdateFindingCommand, Unit>, IRequestHandler<DeleteFindingCommand, Unit>
     {
         private readonly IFindingWriteRepository _writeRepo;
         private readonly IMapper _mapper;

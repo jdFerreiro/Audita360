@@ -7,5 +7,5 @@ namespace Audit360.Application.Features.FollowUps.Commands
     /// Comando para crear un seguimiento.
     /// </summary>
     /// <param name="FollowUp">Datos del seguimiento a crear.</param>
-    public record CreateFollowUpCommand(FollowUpWriteDto FollowUp) : IRequest;
+    public record CreateFollowUpCommand(FollowUpWriteDto FollowUp) : IRequest<MediatR.Unit>;
 }

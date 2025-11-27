@@ -7,9 +7,8 @@ namespace Audit360.Application.Validation.FollowUps
     {
         public CreateFollowUpCommandValidator()
         {
-            RuleFor(x => x.FollowUp.Description).NotEmpty();
-            RuleFor(x => x.FollowUp.CommitmentDate).NotEmpty();
-            RuleFor(x => x.FollowUp.StatusId).GreaterThan(0);
+            RuleFor(x => x.FollowUp.Notes).NotEmpty();
+            RuleFor(x => x.FollowUp.FollowUpStatusId).GreaterThan(0);
             RuleFor(x => x.FollowUp.FindingId).GreaterThan(0);
         }
     }
@@ -19,9 +18,8 @@ namespace Audit360.Application.Validation.FollowUps
         public UpdateFollowUpCommandValidator()
         {
             RuleFor(x => x.Id).GreaterThan(0);
-            RuleFor(x => x.FollowUp.Description).NotEmpty();
-            RuleFor(x => x.FollowUp.CommitmentDate).NotEmpty();
-            RuleFor(x => x.FollowUp.StatusId).GreaterThan(0);
+            RuleFor(x => x.FollowUp.Notes).NotEmpty();
+            RuleFor(x => x.FollowUp.FollowUpStatusId).GreaterThan(0);
             RuleFor(x => x.FollowUp.FindingId).GreaterThan(0);
         }
     }

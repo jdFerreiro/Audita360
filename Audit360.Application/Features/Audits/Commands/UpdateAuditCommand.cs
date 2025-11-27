@@ -8,5 +8,5 @@ namespace Audit360.Application.Features.Audits.Commands
     /// </summary>
     /// <param name="Id">Identificador de la auditoría a actualizar.</param>
     /// <param name="Audit">Datos actualizados de la auditoría.</param>
-    public record UpdateAuditCommand(int Id, AuditWriteDto Audit) : IRequest;
+    public record UpdateAuditCommand(int Id, AuditWriteDto Audit) : IRequest<MediatR.Unit>;
 }

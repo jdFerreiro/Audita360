@@ -7,5 +7,5 @@ namespace Audit360.Application.Features.FollowUpStatuses.Commands
     /// Comando para crear un estado de seguimiento.
     /// </summary>
     /// <param name="FollowUpStatus">Datos del estado a crear.</param>
-    public record CreateFollowUpStatusCommand(FollowUpStatusWriteDto FollowUpStatus) : IRequest;
+    public record CreateFollowUpStatusCommand(FollowUpStatusWriteDto FollowUpStatus) : IRequest<MediatR.Unit>;
 }

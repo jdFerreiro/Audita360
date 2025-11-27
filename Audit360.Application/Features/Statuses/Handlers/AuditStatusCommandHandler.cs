@@ -9,7 +9,7 @@ using AutoMapper;
 
 namespace Audit360.Application.Features.Statuses.Handlers
 {
-    public class AuditStatusCommandHandler : IRequestHandler<CreateAuditStatusCommand>, IRequestHandler<UpdateAuditStatusCommand>, IRequestHandler<DeleteAuditStatusCommand>
+    public class AuditStatusCommandHandler : IRequestHandler<CreateAuditStatusCommand, Unit>, IRequestHandler<UpdateAuditStatusCommand, Unit>, IRequestHandler<DeleteAuditStatusCommand, Unit>
     {
         private readonly IAuditStatusWriteRepository _writeRepo;
         private readonly IMapper _mapper;

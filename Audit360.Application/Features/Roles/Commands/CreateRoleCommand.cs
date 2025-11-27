@@ -7,5 +7,5 @@ namespace Audit360.Application.Features.Roles.Commands
     /// Comando para crear un rol.
     /// </summary>
     /// <param name="Role">Datos del rol a crear.</param>
-    public record CreateRoleCommand(RoleWriteDto Role) : IRequest;
+    public record CreateRoleCommand(RoleWriteDto Role) : IRequest<Unit>;
 }

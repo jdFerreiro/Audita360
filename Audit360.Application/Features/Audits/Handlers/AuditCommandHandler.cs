@@ -3,10 +3,12 @@ using Audit360.Application.Interfaces.Repositories;
 using Audit360.Domain.Entities;
 using AutoMapper;
 using MediatR;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace Audit360.Application.Features.Audits.Handlers
 {
-    public class AuditCommandHandler : IRequestHandler<CreateAuditCommand>, IRequestHandler<UpdateAuditCommand>, IRequestHandler<DeleteAuditCommand>
+    public class AuditCommandHandler : IRequestHandler<CreateAuditCommand, Unit>, IRequestHandler<UpdateAuditCommand, Unit>, IRequestHandler<DeleteAuditCommand, Unit>
     {
         private readonly IAuditWriteRepository _writeRepo;
         private readonly IMapper _mapper;

@@ -20,9 +20,9 @@ namespace Audit360.Application.Mapping
             CreateMap<User, UserReadDto>();
             CreateMap<Audit, AuditReadDto>().ForMember(dest => dest.StatusId, opt => opt.MapFrom(src => src.Status.Id));
             CreateMap<Responsible, ResponsibleReadDto>();
-            CreateMap<Finding, FindingReadDto>().ForMember(dest => dest.TypeId, opt => opt.MapFrom(src => src.Type.Id))
+            CreateMap<Finding, FindingReadDto>().ForMember(dest => dest.FindingTypeId, opt => opt.MapFrom(src => src.Type.Id))
                                                .ForMember(dest => dest.SeverityId, opt => opt.MapFrom(src => src.Severity.Id));
-            CreateMap<FollowUp, FollowUpReadDto>().ForMember(dest => dest.StatusId, opt => opt.MapFrom(src => src.Status.Id));
+            CreateMap<FollowUp, FollowUpReadDto>().ForMember(dest => dest.FollowUpStatusId, opt => opt.MapFrom(src => src.Status.Id));
             CreateMap<Role, RoleReadDto>();
             CreateMap<AuditStatus, AuditStatusReadDto>();
             CreateMap<FindingType, FindingTypeReadDto>();

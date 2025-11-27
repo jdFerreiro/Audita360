@@ -6,6 +6,6 @@ namespace Audit360.Application.Features.Statuses.Commands
     /// <summary>
     /// Comando para crear un estado de auditoría.
     /// </summary>
-    /// <param name="Status">Datos del estado a crear.</param>
-    public record CreateAuditStatusCommand(AuditStatusWriteDto Status) : IRequest;
+    /// <param name="AuditStatus">Datos del estado a crear.</param>
+    public record CreateAuditStatusCommand(AuditStatusWriteDto AuditStatus) : IRequest<MediatR.Unit>;
 }

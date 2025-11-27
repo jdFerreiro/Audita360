@@ -8,5 +8,5 @@ namespace Audit360.Application.Features.Users.Commands
     /// </summary>
     /// <param name="Id">Identificador del usuario a actualizar.</param>
     /// <param name="User">Datos actualizados del usuario.</param>
-    public record UpdateUserCommand(int Id, UserWriteDto User) : IRequest;
+    public record UpdateUserCommand(int Id, UserWriteDto User) : IRequest<MediatR.Unit>;
 }

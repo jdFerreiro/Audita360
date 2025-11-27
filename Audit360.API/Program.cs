@@ -9,7 +9,6 @@ using MediatR;
 using AutoMapper;
 using FluentValidation;
 using Audit360.API.Middleware;
-using Audit360.API.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -43,7 +42,7 @@ builder.Services.AddScoped<IRoleReadRepository, RoleReadRepository>();
 builder.Services.AddScoped<IRoleWriteRepository, RoleWriteRepository>();
 
 builder.Services.AddScoped<IAuditStatusReadRepository, AuditStatusReadRepository>();
-builder Services.AddScoped<IAuditStatusWriteRepository, AuditStatusWriteRepository>();
+builder.Services.AddScoped<IAuditStatusWriteRepository, AuditStatusWriteRepository>();
 
 builder.Services.AddScoped<IFindingTypeReadRepository, FindingTypeReadRepository>();
 builder.Services.AddScoped<IFindingTypeWriteRepository, FindingTypeWriteRepository>();
@@ -58,7 +57,7 @@ builder.Services.AddScoped<IFollowUpStatusWriteRepository, FollowUpStatusWriteRe
 builder.Services.AddAutoMapper(typeof(Audit360.Application.Mapping.DomainToDtoProfile).Assembly);
 
 // MediatR
-builder.Services.AddMediatR(typeof(Audit360.Application.Features.Users.Handlers.UserQueryHandler).Assembly);
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Audit360.Application.Features.Users.Handlers.UserQueryHandler).Assembly));
 
 // FluentValidation: register all validators from Application assembly
 builder.Services.AddValidatorsFromAssembly(typeof(Audit360.Application.Features.Users.Handlers.UserQueryHandler).Assembly);
@@ -66,13 +65,15 @@ builder.Services.AddValidatorsFromAssembly(typeof(Audit360.Application.Features.
 // Add ValidationBehavior to MediatR pipeline
 builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(Audit360.Application.Behaviors.ValidationBehavior<,>));
 
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
+// Swagger/OpenAPI
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-app.MapOpenApi();
+app.UseSwagger();
+app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Audit360 API v1"));
 
 app.UseHttpsRedirection();
 

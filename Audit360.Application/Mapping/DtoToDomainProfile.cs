@@ -27,11 +27,11 @@ namespace Audit360.Application.Mapping
             CreateMap<ResponsibleWriteDto, Responsible>();
 
             CreateMap<FindingWriteDto, Finding>()
-                .ForMember(dest => dest.Type, opt => opt.MapFrom(src => new FindingType { Id = src.TypeId, Description = string.Empty }))
+                .ForMember(dest => dest.Type, opt => opt.MapFrom(src => new FindingType { Id = src.FindingTypeId, Description = string.Empty }))
                 .ForMember(dest => dest.Severity, opt => opt.MapFrom(src => new FindingSeverity { Id = src.SeverityId, Description = string.Empty }));
 
             CreateMap<FollowUpWriteDto, FollowUp>()
-                .ForMember(dest => dest.Status, opt => opt.MapFrom(src => new FollowUpStatus { Id = src.StatusId, Description = string.Empty }));
+                .ForMember(dest => dest.Status, opt => opt.MapFrom(src => new FollowUpStatus { Id = src.FollowUpStatusId, Description = string.Empty }));
 
             CreateMap<RoleWriteDto, Role>();
             CreateMap<AuditStatusWriteDto, AuditStatus>();

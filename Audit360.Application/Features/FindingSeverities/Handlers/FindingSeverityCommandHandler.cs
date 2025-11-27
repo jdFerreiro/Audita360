@@ -9,7 +9,7 @@ using AutoMapper;
 
 namespace Audit360.Application.Features.FindingSeverities.Handlers
 {
-    public class FindingSeverityCommandHandler : IRequestHandler<CreateFindingSeverityCommand>, IRequestHandler<UpdateFindingSeverityCommand>, IRequestHandler<DeleteFindingSeverityCommand>
+    public class FindingSeverityCommandHandler : IRequestHandler<CreateFindingSeverityCommand, Unit>, IRequestHandler<UpdateFindingSeverityCommand, Unit>, IRequestHandler<DeleteFindingSeverityCommand, Unit>
     {
         private readonly IFindingSeverityWriteRepository _writeRepo;
         private readonly IMapper _mapper;

@@ -9,7 +9,7 @@ using AutoMapper;
 
 namespace Audit360.Application.Features.Roles.Handlers
 {
-    public class RoleCommandHandler : IRequestHandler<CreateRoleCommand>, IRequestHandler<UpdateRoleCommand>, IRequestHandler<DeleteRoleCommand>
+    public class RoleCommandHandler : IRequestHandler<CreateRoleCommand, Unit>, IRequestHandler<UpdateRoleCommand, Unit>, IRequestHandler<DeleteRoleCommand, Unit>
     {
         private readonly IRoleWriteRepository _writeRepo;
         private readonly IMapper _mapper;

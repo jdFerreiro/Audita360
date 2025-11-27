@@ -9,7 +9,7 @@ using AutoMapper;
 
 namespace Audit360.Application.Features.Responsibles.Handlers
 {
-    public class ResponsibleCommandHandler : IRequestHandler<CreateResponsibleCommand>, IRequestHandler<UpdateResponsibleCommand>, IRequestHandler<DeleteResponsibleCommand>
+    public class ResponsibleCommandHandler : IRequestHandler<CreateResponsibleCommand, Unit>, IRequestHandler<UpdateResponsibleCommand, Unit>, IRequestHandler<DeleteResponsibleCommand, Unit>
     {
         private readonly IResponsibleWriteRepository _writeRepo;
         private readonly IMapper _mapper;

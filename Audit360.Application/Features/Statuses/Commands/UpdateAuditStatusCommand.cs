@@ -7,6 +7,6 @@ namespace Audit360.Application.Features.Statuses.Commands
     /// Comando para actualizar un estado de auditoría.
     /// </summary>
     /// <param name="Id">Identificador del estado a actualizar.</param>
-    /// <param name="Status">Datos actualizados del estado.</param>
-    public record UpdateAuditStatusCommand(int Id, AuditStatusWriteDto Status) : IRequest;
+    /// <param name="AuditStatus">Datos actualizados del estado.</param>
+    public record UpdateAuditStatusCommand(int Id, AuditStatusWriteDto AuditStatus) : IRequest<MediatR.Unit>;
 }

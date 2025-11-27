@@ -7,5 +7,5 @@ namespace Audit360.Application.Features.Users.Commands
     /// Comando para crear un usuario.
     /// </summary>
     /// <param name="User">Datos del usuario a crear.</param>
-    public record CreateUserCommand(UserWriteDto User) : IRequest;
+    public record CreateUserCommand(UserWriteDto User) : IRequest<MediatR.Unit>;
 }

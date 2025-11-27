@@ -9,7 +9,7 @@ using AutoMapper;
 
 namespace Audit360.Application.Features.Users.Handlers
 {
-    public class UserCommandHandler : IRequestHandler<CreateUserCommand>, IRequestHandler<UpdateUserCommand>, IRequestHandler<DeleteUserCommand>
+    public class UserCommandHandler : IRequestHandler<CreateUserCommand, Unit>, IRequestHandler<UpdateUserCommand, Unit>, IRequestHandler<DeleteUserCommand, Unit>
     {
         private readonly IUserWriteRepository _writeRepo;
         private readonly IMapper _mapper;
