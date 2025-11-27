@@ -13,6 +13,9 @@ namespace Audit360.API.Controllers
         private readonly IMediator _mediator;
         public FindingSeveritiesController(IMediator mediator) => _mediator = mediator;
 
+        /// <summary>
+        /// Obtiene la lista de severidades de hallazgos.
+        /// </summary>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<FindingSeverityReadDto>>> GetAll()
         {
@@ -20,6 +23,10 @@ namespace Audit360.API.Controllers
             return Ok(result);
         }
 
+        /// <summary>
+        /// Obtiene una severidad por su identificador.
+        /// </summary>
+        /// <param name="id">Identificador de la severidad.</param>
         [HttpGet("{id:int}")]
         public async Task<ActionResult<FindingSeverityReadDto?>> GetById(int id)
         {
@@ -28,6 +35,10 @@ namespace Audit360.API.Controllers
             return Ok(result);
         }
 
+        /// <summary>
+        /// Crea una nueva severidad de hallazgo.
+        /// </summary>
+        /// <param name="dto">Datos de la severidad a crear.</param>
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] FindingSeverityWriteDto dto)
         {
@@ -35,6 +46,11 @@ namespace Audit360.API.Controllers
             return NoContent();
         }
 
+        /// <summary>
+        /// Actualiza una severidad existente.
+        /// </summary>
+        /// <param name="id">Identificador de la severidad a actualizar.</param>
+        /// <param name="dto">Datos actualizados de la severidad.</param>
         [HttpPut("{id:int}")]
         public async Task<IActionResult> Update(int id, [FromBody] FindingSeverityWriteDto dto)
         {
@@ -42,6 +58,10 @@ namespace Audit360.API.Controllers
             return NoContent();
         }
 
+        /// <summary>
+        /// Elimina una severidad por su identificador.
+        /// </summary>
+        /// <param name="id">Identificador de la severidad a eliminar.</param>
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> Delete(int id)
         {

@@ -9,6 +9,7 @@ using MediatR;
 using AutoMapper;
 using FluentValidation;
 using Audit360.API.Middleware;
+using Audit360.API.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -42,7 +43,7 @@ builder.Services.AddScoped<IRoleReadRepository, RoleReadRepository>();
 builder.Services.AddScoped<IRoleWriteRepository, RoleWriteRepository>();
 
 builder.Services.AddScoped<IAuditStatusReadRepository, AuditStatusReadRepository>();
-builder.Services.AddScoped<IAuditStatusWriteRepository, AuditStatusWriteRepository>();
+builder Services.AddScoped<IAuditStatusWriteRepository, AuditStatusWriteRepository>();
 
 builder.Services.AddScoped<IFindingTypeReadRepository, FindingTypeReadRepository>();
 builder.Services.AddScoped<IFindingTypeWriteRepository, FindingTypeWriteRepository>();
@@ -71,10 +72,7 @@ builder.Services.AddOpenApi();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.MapOpenApi();
-}
+app.MapOpenApi();
 
 app.UseHttpsRedirection();
 

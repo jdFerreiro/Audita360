@@ -13,6 +13,9 @@ namespace Audit360.API.Controllers
         private readonly IMediator _mediator;
         public FollowUpStatusesController(IMediator mediator) => _mediator = mediator;
 
+        /// <summary>
+        /// Obtiene la lista de estados de seguimiento.
+        /// </summary>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<FollowUpStatusReadDto>>> GetAll()
         {
@@ -20,6 +23,10 @@ namespace Audit360.API.Controllers
             return Ok(result);
         }
 
+        /// <summary>
+        /// Obtiene un estado de seguimiento por su identificador.
+        /// </summary>
+        /// <param name="id">Identificador del estado.</param>
         [HttpGet("{id:int}")]
         public async Task<ActionResult<FollowUpStatusReadDto?>> GetById(int id)
         {
@@ -28,6 +35,10 @@ namespace Audit360.API.Controllers
             return Ok(result);
         }
 
+        /// <summary>
+        /// Crea un nuevo estado de seguimiento.
+        /// </summary>
+        /// <param name="dto">Datos del estado a crear.</param>
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] FollowUpStatusWriteDto dto)
         {
@@ -35,6 +46,11 @@ namespace Audit360.API.Controllers
             return NoContent();
         }
 
+        /// <summary>
+        /// Actualiza un estado de seguimiento existente.
+        /// </summary>
+        /// <param name="id">Identificador del estado a actualizar.</param>
+        /// <param name="dto">Datos actualizados del estado.</param>
         [HttpPut("{id:int}")]
         public async Task<IActionResult> Update(int id, [FromBody] FollowUpStatusWriteDto dto)
         {
@@ -42,6 +58,10 @@ namespace Audit360.API.Controllers
             return NoContent();
         }
 
+        /// <summary>
+        /// Elimina un estado de seguimiento por su identificador.
+        /// </summary>
+        /// <param name="id">Identificador del estado a eliminar.</param>
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> Delete(int id)
         {

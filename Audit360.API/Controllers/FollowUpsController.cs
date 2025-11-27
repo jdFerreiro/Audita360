@@ -13,6 +13,9 @@ namespace Audit360.API.Controllers
         private readonly IMediator _mediator;
         public FollowUpsController(IMediator mediator) => _mediator = mediator;
 
+        /// <summary>
+        /// Obtiene la lista de seguimientos.
+        /// </summary>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<FollowUpReadDto>>> GetAll()
         {
@@ -20,6 +23,10 @@ namespace Audit360.API.Controllers
             return Ok(result);
         }
 
+        /// <summary>
+        /// Obtiene un seguimiento por su identificador.
+        /// </summary>
+        /// <param name="id">Identificador del seguimiento.</param>
         [HttpGet("{id:int}")]
         public async Task<ActionResult<FollowUpReadDto?>> GetById(int id)
         {
@@ -28,6 +35,10 @@ namespace Audit360.API.Controllers
             return Ok(result);
         }
 
+        /// <summary>
+        /// Crea un nuevo seguimiento.
+        /// </summary>
+        /// <param name="dto">Datos del seguimiento a crear.</param>
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] FollowUpWriteDto dto)
         {
@@ -35,6 +46,11 @@ namespace Audit360.API.Controllers
             return NoContent();
         }
 
+        /// <summary>
+        /// Actualiza un seguimiento existente.
+        /// </summary>
+        /// <param name="id">Identificador del seguimiento a actualizar.</param>
+        /// <param name="dto">Datos actualizados del seguimiento.</param>
         [HttpPut("{id:int}")]
         public async Task<IActionResult> Update(int id, [FromBody] FollowUpWriteDto dto)
         {
@@ -42,6 +58,10 @@ namespace Audit360.API.Controllers
             return NoContent();
         }
 
+        /// <summary>
+        /// Elimina un seguimiento por su identificador.
+        /// </summary>
+        /// <param name="id">Identificador del seguimiento a eliminar.</param>
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> Delete(int id)
         {

@@ -1,4 +1,7 @@
 namespace Audit360.Application.Features.Dto.Roles
 {
-    public record RoleWriteDto(string Name, string? Description);
+    /// <summary>
+    /// DTO de escritura para rol.
+    /// </summary>
+    public record RoleWriteDto(string Name, string Description);
 }

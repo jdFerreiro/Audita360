@@ -13,6 +13,9 @@ namespace Audit360.API.Controllers
         private readonly IMediator _mediator;
         public AuditsController(IMediator mediator) => _mediator = mediator;
 
+        /// <summary>
+        /// Obtiene la lista de auditorías.
+        /// </summary>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<AuditReadDto>>> GetAll()
         {
@@ -20,6 +23,10 @@ namespace Audit360.API.Controllers
             return Ok(result);
         }
 
+        /// <summary>
+        /// Obtiene una auditoría por su identificador.
+        /// </summary>
+        /// <param name="id">Identificador de la auditoría.</param>
         [HttpGet("{id:int}")]
         public async Task<ActionResult<AuditReadDto?>> GetById(int id)
         {
@@ -28,6 +35,10 @@ namespace Audit360.API.Controllers
             return Ok(result);
         }
 
+        /// <summary>
+        /// Crea una nueva auditoría.
+        /// </summary>
+        /// <param name="dto">Datos de la auditoría a crear.</param>
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] AuditWriteDto dto)
         {
@@ -35,6 +46,11 @@ namespace Audit360.API.Controllers
             return NoContent();
         }
 
+        /// <summary>
+        /// Actualiza una auditoría existente.
+        /// </summary>
+        /// <param name="id">Identificador de la auditoría a actualizar.</param>
+        /// <param name="dto">Datos actualizados de la auditoría.</param>
         [HttpPut("{id:int}")]
         public async Task<IActionResult> Update(int id, [FromBody] AuditWriteDto dto)
         {
@@ -42,6 +58,10 @@ namespace Audit360.API.Controllers
             return NoContent();
         }
 
+        /// <summary>
+        /// Elimina una auditoría por su identificador.
+        /// </summary>
+        /// <param name="id">Identificador de la auditoría a eliminar.</param>
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> Delete(int id)
         {

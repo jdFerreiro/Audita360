@@ -13,6 +13,9 @@ namespace Audit360.API.Controllers
         private readonly IMediator _mediator;
         public RolesController(IMediator mediator) => _mediator = mediator;
 
+        /// <summary>
+        /// Obtiene la lista de roles.
+        /// </summary>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<RoleReadDto>>> GetAll()
         {
@@ -20,6 +23,10 @@ namespace Audit360.API.Controllers
             return Ok(result);
         }
 
+        /// <summary>
+        /// Obtiene un rol por su identificador.
+        /// </summary>
+        /// <param name="id">Identificador del rol.</param>
         [HttpGet("{id:int}")]
         public async Task<ActionResult<RoleReadDto?>> GetById(int id)
         {
@@ -28,6 +35,10 @@ namespace Audit360.API.Controllers
             return Ok(result);
         }
 
+        /// <summary>
+        /// Crea un nuevo rol.
+        /// </summary>
+        /// <param name="dto">Datos del rol a crear.</param>
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] RoleWriteDto dto)
         {
@@ -35,6 +46,11 @@ namespace Audit360.API.Controllers
             return NoContent();
         }
 
+        /// <summary>
+        /// Actualiza un rol existente.
+        /// </summary>
+        /// <param name="id">Identificador del rol a actualizar.</param>
+        /// <param name="dto">Datos actualizados del rol.</param>
         [HttpPut("{id:int}")]
         public async Task<IActionResult> Update(int id, [FromBody] RoleWriteDto dto)
         {
@@ -42,6 +58,10 @@ namespace Audit360.API.Controllers
             return NoContent();
         }
 
+        /// <summary>
+        /// Elimina un rol por su identificador.
+        /// </summary>
+        /// <param name="id">Identificador del rol a eliminar.</param>
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> Delete(int id)
         {

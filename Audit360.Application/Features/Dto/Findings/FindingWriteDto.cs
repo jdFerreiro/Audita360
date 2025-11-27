@@ -1,4 +1,7 @@
 namespace Audit360.Application.Features.Dto.Findings
 {
-    public record FindingWriteDto(string Description, int TypeId, int SeverityId, System.DateTime Date, int AuditId);
+    /// <summary>
+    /// DTO de escritura para crear o actualizar un hallazgo.
+    /// </summary>
+    public record FindingWriteDto(string Title, string Description, int FindingTypeId, int SeverityId, int AuditId);
 }

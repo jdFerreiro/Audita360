@@ -13,6 +13,9 @@ namespace Audit360.API.Controllers
         private readonly IMediator _mediator;
         public ResponsiblesController(IMediator mediator) => _mediator = mediator;
 
+        /// <summary>
+        /// Obtiene la lista de responsables.
+        /// </summary>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ResponsibleReadDto>>> GetAll()
         {
@@ -20,6 +23,10 @@ namespace Audit360.API.Controllers
             return Ok(result);
         }
 
+        /// <summary>
+        /// Obtiene un responsable por su identificador.
+        /// </summary>
+        /// <param name="id">Identificador del responsable.</param>
         [HttpGet("{id:int}")]
         public async Task<ActionResult<ResponsibleReadDto?>> GetById(int id)
         {
@@ -28,6 +35,10 @@ namespace Audit360.API.Controllers
             return Ok(result);
         }
 
+        /// <summary>
+        /// Crea un nuevo responsable.
+        /// </summary>
+        /// <param name="dto">Datos del responsable a crear.</param>
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] ResponsibleWriteDto dto)
         {
@@ -35,6 +46,11 @@ namespace Audit360.API.Controllers
             return NoContent();
         }
 
+        /// <summary>
+        /// Actualiza un responsable existente.
+        /// </summary>
+        /// <param name="id">Identificador del responsable a actualizar.</param>
+        /// <param name="dto">Datos actualizados del responsable.</param>
         [HttpPut("{id:int}")]
         public async Task<IActionResult> Update(int id, [FromBody] ResponsibleWriteDto dto)
         {
@@ -42,6 +58,10 @@ namespace Audit360.API.Controllers
             return NoContent();
         }
 
+        /// <summary>
+        /// Elimina un responsable por su identificador.
+        /// </summary>
+        /// <param name="id">Identificador del responsable a eliminar.</param>
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> Delete(int id)
         {

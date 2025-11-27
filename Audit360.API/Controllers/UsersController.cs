@@ -13,6 +13,9 @@ namespace Audit360.API.Controllers
         private readonly IMediator _mediator;
         public UsersController(IMediator mediator) => _mediator = mediator;
 
+        /// <summary>
+        /// Obtiene la lista de usuarios.
+        /// </summary>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UserReadDto>>> GetAll()
         {
@@ -20,6 +23,10 @@ namespace Audit360.API.Controllers
             return Ok(result);
         }
 
+        /// <summary>
+        /// Obtiene un usuario por su identificador.
+        /// </summary>
+        /// <param name="id">Identificador del usuario.</param>
         [HttpGet("{id:int}")]
         public async Task<ActionResult<UserReadDto?>> GetById(int id)
         {
@@ -28,6 +35,10 @@ namespace Audit360.API.Controllers
             return Ok(result);
         }
 
+        /// <summary>
+        /// Crea un nuevo usuario.
+        /// </summary>
+        /// <param name="dto">Datos del usuario a crear.</param>
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] UserWriteDto dto)
         {
@@ -35,6 +46,11 @@ namespace Audit360.API.Controllers
             return NoContent();
         }
 
+        /// <summary>
+        /// Actualiza un usuario existente.
+        /// </summary>
+        /// <param name="id">Identificador del usuario a actualizar.</param>
+        /// <param name="dto">Datos actualizados del usuario.</param>
         [HttpPut("{id:int}")]
         public async Task<IActionResult> Update(int id, [FromBody] UserWriteDto dto)
         {
@@ -42,6 +58,10 @@ namespace Audit360.API.Controllers
             return NoContent();
         }
 
+        /// <summary>
+        /// Elimina un usuario por su identificador.
+        /// </summary>
+        /// <param name="id">Identificador del usuario a eliminar.</param>
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> Delete(int id)
         {

@@ -13,6 +13,9 @@ namespace Audit360.API.Controllers
         private readonly IMediator _mediator;
         public FindingsController(IMediator mediator) => _mediator = mediator;
 
+        /// <summary>
+        /// Obtiene la lista de hallazgos.
+        /// </summary>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<FindingReadDto>>> GetAll()
         {
@@ -20,6 +23,10 @@ namespace Audit360.API.Controllers
             return Ok(result);
         }
 
+        /// <summary>
+        /// Obtiene un hallazgo por su identificador.
+        /// </summary>
+        /// <param name="id">Identificador del hallazgo.</param>
         [HttpGet("{id:int}")]
         public async Task<ActionResult<FindingReadDto?>> GetById(int id)
         {
@@ -28,6 +35,10 @@ namespace Audit360.API.Controllers
             return Ok(result);
         }
 
+        /// <summary>
+        /// Crea un nuevo hallazgo.
+        /// </summary>
+        /// <param name="dto">Datos del hallazgo a crear.</param>
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] FindingWriteDto dto)
         {
@@ -35,6 +46,11 @@ namespace Audit360.API.Controllers
             return NoContent();
         }
 
+        /// <summary>
+        /// Actualiza un hallazgo existente.
+        /// </summary>
+        /// <param name="id">Identificador del hallazgo a actualizar.</param>
+        /// <param name="dto">Datos actualizados del hallazgo.</param>
         [HttpPut("{id:int}")]
         public async Task<IActionResult> Update(int id, [FromBody] FindingWriteDto dto)
         {
@@ -42,6 +58,10 @@ namespace Audit360.API.Controllers
             return NoContent();
         }
 
+        /// <summary>
+        /// Elimina un hallazgo por su identificador.
+        /// </summary>
+        /// <param name="id">Identificador del hallazgo a eliminar.</param>
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> Delete(int id)
         {

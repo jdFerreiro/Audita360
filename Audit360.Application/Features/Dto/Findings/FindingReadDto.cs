@@ -1,4 +1,7 @@
 namespace Audit360.Application.Features.Dto.Findings
 {
-    public record FindingReadDto(int Id, string Description, int TypeId, int SeverityId, System.DateTime Date, int AuditId);
+    /// <summary>
+    /// DTO de lectura para un hallazgo.
+    /// </summary>
+    public record FindingReadDto(int Id, string Title, string Description, int FindingTypeId, int SeverityId, int AuditId);
 }
