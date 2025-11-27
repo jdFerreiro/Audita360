@@ -5,31 +5,27 @@ using Audit360.Application.Features.Dto.Audits;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Collections.Generic;
+using AutoMapper;
 
 namespace Audit360.Application.Features.Audits.Handlers
 {
     public class AuditQueryHandler : IRequestHandler<GetAuditsQuery, IEnumerable<AuditReadDto>>, IRequestHandler<GetAuditByIdQuery, AuditReadDto?>
     {
         private readonly IAuditReadRepository _readRepo;
+        private readonly IMapper _mapper;
 
-        public AuditQueryHandler(IAuditReadRepository readRepo) => _readRepo = readRepo;
+        public AuditQueryHandler(IAuditReadRepository readRepo, IMapper mapper) => (_readRepo, _mapper) = (readRepo, mapper);
 
         public async Task<IEnumerable<AuditReadDto>> Handle(GetAuditsQuery request, CancellationToken cancellationToken)
         {
             var list = await _readRepo.GetListAsync();
-            var dtoList = new List<AuditReadDto>();
-            foreach (var a in list)
-            {
-                dtoList.Add(new AuditReadDto(a.Id, a.Title, a.Area, a.StartDate, a.EndDate, a.Status.Id, a.ResponsibleId));
-            }
-            return dtoList;
+            return _mapper.Map<IEnumerable<AuditReadDto>>(list);
         }
 
         public async Task<AuditReadDto?> Handle(GetAuditByIdQuery request, CancellationToken cancellationToken)
         {
             var a = await _readRepo.GetByIdAsync(request.Id);
-            if (a == null) return null;
-            return new AuditReadDto(a.Id, a.Title, a.Area, a.StartDate, a.EndDate, a.Status.Id, a.ResponsibleId);
+            return a == null ? null : _mapper.Map<AuditReadDto>(a);
         }
     }
 }

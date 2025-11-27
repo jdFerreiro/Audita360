@@ -5,29 +5,27 @@ using Audit360.Application.Features.Dto.Responsibles;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Collections.Generic;
+using AutoMapper;
 
 namespace Audit360.Application.Features.Responsibles.Handlers
 {
     public class ResponsibleQueryHandler : IRequestHandler<GetResponsiblesQuery, IEnumerable<ResponsibleReadDto>>, IRequestHandler<GetResponsibleByIdQuery, ResponsibleReadDto?>
     {
         private readonly IResponsibleReadRepository _readRepo;
+        private readonly IMapper _mapper;
 
-        public ResponsibleQueryHandler(IResponsibleReadRepository readRepo) => _readRepo = readRepo;
+        public ResponsibleQueryHandler(IResponsibleReadRepository readRepo, IMapper mapper) => (_readRepo, _mapper) = (readRepo, mapper);
 
         public async Task<IEnumerable<ResponsibleReadDto>> Handle(GetResponsiblesQuery request, CancellationToken cancellationToken)
         {
             var list = await _readRepo.GetListAsync();
-            var dto = new List<ResponsibleReadDto>();
-            foreach (var r in list)
-                dto.Add(new ResponsibleReadDto(r.Id, r.Name, r.Email, r.Area));
-            return dto;
+            return _mapper.Map<IEnumerable<ResponsibleReadDto>>(list);
         }
 
         public async Task<ResponsibleReadDto?> Handle(GetResponsibleByIdQuery request, CancellationToken cancellationToken)
         {
             var r = await _readRepo.GetByIdAsync(request.Id);
-            if (r == null) return null;
-            return new ResponsibleReadDto(r.Id, r.Name, r.Email, r.Area);
+            return r == null ? null : _mapper.Map<ResponsibleReadDto>(r);
         }
     }
 }

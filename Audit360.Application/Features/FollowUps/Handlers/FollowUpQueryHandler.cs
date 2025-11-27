@@ -5,29 +5,27 @@ using Audit360.Application.Features.Dto.FollowUps;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Collections.Generic;
+using AutoMapper;
 
 namespace Audit360.Application.Features.FollowUps.Handlers
 {
     public class FollowUpQueryHandler : IRequestHandler<GetFollowUpsQuery, IEnumerable<FollowUpReadDto>>, IRequestHandler<GetFollowUpByIdQuery, FollowUpReadDto?>
     {
         private readonly IFollowUpReadRepository _readRepo;
+        private readonly IMapper _mapper;
 
-        public FollowUpQueryHandler(IFollowUpReadRepository readRepo) => _readRepo = readRepo;
+        public FollowUpQueryHandler(IFollowUpReadRepository readRepo, IMapper mapper) => (_readRepo, _mapper) = (readRepo, mapper);
 
         public async Task<IEnumerable<FollowUpReadDto>> Handle(GetFollowUpsQuery request, CancellationToken cancellationToken)
         {
             var list = await _readRepo.GetListAsync();
-            var dto = new List<FollowUpReadDto>();
-            foreach (var f in list)
-                dto.Add(new FollowUpReadDto(f.Id, f.Description, f.CommitmentDate, f.Status.Id, f.FindingId));
-            return dto;
+            return _mapper.Map<IEnumerable<FollowUpReadDto>>(list);
         }
 
         public async Task<FollowUpReadDto?> Handle(GetFollowUpByIdQuery request, CancellationToken cancellationToken)
         {
             var f = await _readRepo.GetByIdAsync(request.Id);
-            if (f == null) return null;
-            return new FollowUpReadDto(f.Id, f.Description, f.CommitmentDate, f.Status.Id, f.FindingId);
+            return f == null ? null : _mapper.Map<FollowUpReadDto>(f);
         }
     }
 }

@@ -6,6 +6,9 @@ using Audit360.Infrastructure.Repositories.Write;
 using Audit360.Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
 using MediatR;
+using AutoMapper;
+using FluentValidation;
+using Audit360.API.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -50,8 +53,17 @@ builder.Services.AddScoped<IFindingSeverityWriteRepository, FindingSeverityWrite
 builder.Services.AddScoped<IFollowUpStatusReadRepository, FollowUpStatusReadRepository>();
 builder.Services.AddScoped<IFollowUpStatusWriteRepository, FollowUpStatusWriteRepository>();
 
+// AutoMapper
+builder.Services.AddAutoMapper(typeof(Audit360.Application.Mapping.DomainToDtoProfile).Assembly);
+
 // MediatR
 builder.Services.AddMediatR(typeof(Audit360.Application.Features.Users.Handlers.UserQueryHandler).Assembly);
+
+// FluentValidation: register all validators from Application assembly
+builder.Services.AddValidatorsFromAssembly(typeof(Audit360.Application.Features.Users.Handlers.UserQueryHandler).Assembly);
+
+// Add ValidationBehavior to MediatR pipeline
+builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(Audit360.Application.Behaviors.ValidationBehavior<,>));
 
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
@@ -65,6 +77,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+// Use middleware for validation exceptions
+app.UseMiddleware<ValidationExceptionMiddleware>();
 
 app.UseAuthorization();
 

@@ -5,27 +5,28 @@ using Audit360.Application.Features.Dto.FindingTypes;
 using Audit360.Domain.Entities;
 using System.Threading.Tasks;
 using System.Threading;
+using AutoMapper;
 
 namespace Audit360.Application.Features.FindingTypes.Handlers
 {
     public class FindingTypeCommandHandler : IRequestHandler<CreateFindingTypeCommand>, IRequestHandler<UpdateFindingTypeCommand>, IRequestHandler<DeleteFindingTypeCommand>
     {
         private readonly IFindingTypeWriteRepository _writeRepo;
+        private readonly IMapper _mapper;
 
-        public FindingTypeCommandHandler(IFindingTypeWriteRepository writeRepo) => _writeRepo = writeRepo;
+        public FindingTypeCommandHandler(IFindingTypeWriteRepository writeRepo, IMapper mapper) => (_writeRepo, _mapper) = (writeRepo, mapper);
 
         public async Task<Unit> Handle(CreateFindingTypeCommand request, CancellationToken cancellationToken)
         {
-            var dto = request.FindingType;
-            var e = new FindingType { Description = dto.Description };
+            var e = _mapper.Map<FindingType>(request.FindingType);
             await _writeRepo.CreateAsync(e);
             return Unit.Value;
         }
 
         public async Task<Unit> Handle(UpdateFindingTypeCommand request, CancellationToken cancellationToken)
         {
-            var dto = request.FindingType;
-            var e = new FindingType { Id = request.Id, Description = dto.Description };
+            var e = _mapper.Map<FindingType>(request.FindingType);
+            e.Id = request.Id;
             await _writeRepo.UpdateAsync(e);
             return Unit.Value;
         }
