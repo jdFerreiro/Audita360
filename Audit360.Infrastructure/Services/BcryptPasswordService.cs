@@ -1,5 +1,4 @@
 using Audit360.Application.Interfaces;
-using BCrypt.Net;
 
 namespace Audit360.Infrastructure.Services
 {

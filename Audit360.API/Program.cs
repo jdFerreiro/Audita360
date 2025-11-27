@@ -1,7 +1,11 @@
 using Audit360.Application.Interfaces;
+using Audit360.Application.Interfaces.Repositories;
 using Audit360.Infrastructure.Data;
+using Audit360.Infrastructure.Repositories.Read;
+using Audit360.Infrastructure.Repositories.Write;
 using Audit360.Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
+using MediatR;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,9 +19,39 @@ builder.Services.AddDbContext<Audit360DbContext>(options =>
 // Password service
 builder.Services.AddSingleton<IPasswordService, BcryptPasswordService>();
 
-// Register user services/repositories
-builder.Services.AddScoped<IUserRepository, UserRepository>();
-builder.Services.AddScoped<IUserService, UserService>();
+// Register repositories (read/write)
+builder.Services.AddScoped<IUserReadRepository, UserReadRepository>();
+builder.Services.AddScoped<IUserWriteRepository, UserWriteRepository>();
+
+builder.Services.AddScoped<IAuditReadRepository, AuditReadRepository>();
+builder.Services.AddScoped<IAuditWriteRepository, AuditWriteRepository>();
+
+builder.Services.AddScoped<IResponsibleReadRepository, ResponsibleReadRepository>();
+builder.Services.AddScoped<IResponsibleWriteRepository, ResponsibleWriteRepository>();
+
+builder.Services.AddScoped<IFindingReadRepository, FindingReadRepository>();
+builder.Services.AddScoped<IFindingWriteRepository, FindingWriteRepository>();
+
+builder.Services.AddScoped<IFollowUpReadRepository, FollowUpReadRepository>();
+builder.Services.AddScoped<IFollowUpWriteRepository, FollowUpWriteRepository>();
+
+builder.Services.AddScoped<IRoleReadRepository, RoleReadRepository>();
+builder.Services.AddScoped<IRoleWriteRepository, RoleWriteRepository>();
+
+builder.Services.AddScoped<IAuditStatusReadRepository, AuditStatusReadRepository>();
+builder.Services.AddScoped<IAuditStatusWriteRepository, AuditStatusWriteRepository>();
+
+builder.Services.AddScoped<IFindingTypeReadRepository, FindingTypeReadRepository>();
+builder.Services.AddScoped<IFindingTypeWriteRepository, FindingTypeWriteRepository>();
+
+builder.Services.AddScoped<IFindingSeverityReadRepository, FindingSeverityReadRepository>();
+builder.Services.AddScoped<IFindingSeverityWriteRepository, FindingSeverityWriteRepository>();
+
+builder.Services.AddScoped<IFollowUpStatusReadRepository, FollowUpStatusReadRepository>();
+builder.Services.AddScoped<IFollowUpStatusWriteRepository, FollowUpStatusWriteRepository>();
+
+// MediatR
+builder.Services.AddMediatR(typeof(Audit360.Application.Features.Users.Handlers.UserQueryHandler).Assembly);
 
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();

@@ -1,4 +1,4 @@
-namespace Audit360.Application.Interfaces
+﻿namespace Audit360.Application.Interfaces
 {
     public interface IPasswordService
     {
