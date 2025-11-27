@@ -1,11 +1,8 @@
-using MediatR;
 using Audit360.Application.Features.Audits.Commands;
 using Audit360.Application.Interfaces.Repositories;
-using Audit360.Application.Features.Dto.Audits;
 using Audit360.Domain.Entities;
-using System.Threading.Tasks;
-using System.Threading;
 using AutoMapper;
+using MediatR;
 
 namespace Audit360.Application.Features.Audits.Handlers
 {
