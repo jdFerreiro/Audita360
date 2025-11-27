@@ -29,5 +29,12 @@ namespace Audit360.Infrastructure.Repositories.Read
             var list = await _db.Users.FromSqlRaw("EXEC usp_User_GetByUsername @Username", p).ToListAsync();
             return list.FirstOrDefault();
         }
+
+        public async Task<User?> GetByEmailAsync(string email)
+        {
+            return await _db.Users
+                            .Include(u => u.Role)
+                            .FirstOrDefaultAsync(u => u.Email == email);
+        }
     }
 }

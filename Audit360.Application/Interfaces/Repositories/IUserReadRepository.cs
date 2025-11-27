@@ -8,5 +8,8 @@ namespace Audit360.Application.Interfaces.Repositories
     {
         // Additional read-specific methods for User can be added here
         Task<User?> GetByUsernameAsync(string username);
+
+        // Added: obtain user by email (needed for authentication)
+        Task<User?> GetByEmailAsync(string email);
     }
 }
