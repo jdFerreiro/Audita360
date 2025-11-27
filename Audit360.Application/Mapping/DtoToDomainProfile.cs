@@ -1,15 +1,15 @@
-using AutoMapper;
-using Audit360.Domain.Entities;
-using Audit360.Application.Features.Dto.Users;
 using Audit360.Application.Features.Dto.Audits;
-using Audit360.Application.Features.Dto.Responsibles;
 using Audit360.Application.Features.Dto.Findings;
+using Audit360.Application.Features.Dto.FindingSeverities;
+using Audit360.Application.Features.Dto.FindingTypes;
 using Audit360.Application.Features.Dto.FollowUps;
+using Audit360.Application.Features.Dto.FollowUpStatuses;
+using Audit360.Application.Features.Dto.Responsibles;
 using Audit360.Application.Features.Dto.Roles;
 using Audit360.Application.Features.Dto.Statuses;
-using Audit360.Application.Features.Dto.FindingTypes;
-using Audit360.Application.Features.Dto.FindingSeverities;
-using Audit360.Application.Features.Dto.FollowUpStatuses;
+using Audit360.Application.Features.Dto.Users;
+using Audit360.Domain.Entities;
+using AutoMapper;
 
 namespace Audit360.Application.Mapping
 {
@@ -28,10 +28,13 @@ namespace Audit360.Application.Mapping
 
             CreateMap<FindingWriteDto, Finding>()
                 .ForMember(dest => dest.Type, opt => opt.MapFrom(src => new FindingType { Id = src.FindingTypeId, Description = string.Empty }))
-                .ForMember(dest => dest.Severity, opt => opt.MapFrom(src => new FindingSeverity { Id = src.SeverityId, Description = string.Empty }));
+                .ForMember(dest => dest.Severity, opt => opt.MapFrom(src => new FindingSeverity { Id = src.SeverityId, Description = string.Empty }))
+                .ForMember(dest => dest.Date, opt => opt.MapFrom(src => src.Date));
 
             CreateMap<FollowUpWriteDto, FollowUp>()
-                .ForMember(dest => dest.Status, opt => opt.MapFrom(src => new FollowUpStatus { Id = src.FollowUpStatusId, Description = string.Empty }));
+                .ForMember(dest => dest.FollowUpStatusId, opt => opt.MapFrom(src => src.StatusId))
+                .ForMember(dest => dest.FollowUpStatus, opt => opt.MapFrom(src => new FollowUpStatus { Id = src.StatusId, Description = string.Empty }))
+                .ForMember(dest => dest.CommitmentDate, opt => opt.MapFrom(src => src.CommitmentDate));
 
             CreateMap<RoleWriteDto, Role>();
             CreateMap<AuditStatusWriteDto, AuditStatus>();

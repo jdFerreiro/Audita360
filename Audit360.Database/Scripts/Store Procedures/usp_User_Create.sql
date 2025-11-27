@@ -4,15 +4,19 @@ GO
 
 CREATE OR ALTER PROCEDURE dbo.usp_User_Create
     @Username NVARCHAR(100),
+    @Email NVARCHAR(200),
     @PasswordHash NVARCHAR(200),
+    @FullName NVARCHAR(200),
+    @IsActive BIT = 1,
     @RoleId INT,
+    @CreatedAt DATETIME2 = NULL,
     @NewId INT OUTPUT
 AS
 BEGIN
     SET NOCOUNT ON;
     BEGIN TRY
-        INSERT INTO dbo.Users (Username, PasswordHash, RoleId)
-        VALUES (@Username, @PasswordHash, @RoleId);
+        INSERT INTO dbo.Users (Username, Email, PasswordHash, FullName, IsActive, RoleId, CreatedAt)
+        VALUES (@Username, @Email, @PasswordHash, @FullName, @IsActive, @RoleId, ISNULL(@CreatedAt, SYSUTCDATETIME()));
 
         SET @NewId = CAST(SCOPE_IDENTITY() AS INT);
     END TRY

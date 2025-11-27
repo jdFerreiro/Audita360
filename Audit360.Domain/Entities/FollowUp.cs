@@ -16,8 +16,10 @@ namespace Audit360.Domain.Entities
         [Required(ErrorMessage = "La fecha de compromiso es obligatoria")]
         public required DateTime CommitmentDate { get; set; }
 
+
         [Required(ErrorMessage = "El estado del seguimiento es obligatorio")]
-        public required FollowUpStatus Status { get; set; }
+        public required int FollowUpStatusId { get; set; }
+        public FollowUpStatus FollowUpStatus { get; set; } = null!;
 
         // Relationships
         [Required(ErrorMessage = "El hallazgo asociado es obligatorio")]

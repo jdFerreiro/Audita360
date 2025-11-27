@@ -1,0 +1,91 @@
+name: CI-CD Simulado
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.x'
+
+      - name: Restore
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --configuration Release --no-restore
+
+      - name: Run unit tests
+        run: |
+          mkdir -p test-results/unit
+          dotnet test ./Audit360.UnitTests/Audit360.UnitTests.csproj --no-build --logger "trx;LogFileName=unit-tests.trx" --results-directory test-results/unit
+
+      - name: Upload unit test results
+        uses: actions/upload-artifact@v4
+        with:
+          name: audit360-test-results-unit
+          path: test-results/unit
+
+      - name: Run integration tests
+        run: |
+          mkdir -p test-results/integration
+          dotnet test ./Audit360.IntegrationTests/Audit360.IntegrationTests.csproj --no-build --logger "trx;LogFileName=integration-tests.trx" --results-directory test-results/integration || true
+
+      - name: Upload integration test results
+        uses: actions/upload-artifact@v4
+        with:
+          name: audit360-test-results-integration
+          path: test-results/integration
+
+      - name: Publish API
+        run: dotnet publish ./Audit360.API/Audit360.API.csproj -c Release -o ./artifacts/publish
+
+      - name: Upload published artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: audit360-publish
+          path: ./artifacts/publish
+
+  deploy-simulado:
+    runs-on: ubuntu-latest
+    needs: build-and-test
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download published artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: audit360-publish
+          path: ./artifacts
+
+      - name: Download unit test results
+        uses: actions/download-artifact@v3
+        with:
+          name: audit360-test-results-unit
+          path: ./artifacts/test-results
+
+      - name: Download integration test results
+        uses: actions/download-artifact@v3
+        with:
+          name: audit360-test-results-integration
+          path: ./artifacts/test-results
+
+      - name: Simulate deploy
+        run: |
+          mkdir -p ./deploy
+          cp -r ./artifacts/publish/* ./deploy/
+          echo "Deployed to ./deploy on runner"
+
+      - name: Upload deployment result
+        uses: actions/upload-artifact@v4
+        with:
+          name: audit360-deploy
+          path: ./deploy

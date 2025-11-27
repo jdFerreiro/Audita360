@@ -23,12 +23,13 @@ namespace Audit360.Domain.Entities
         public DateTime? EndDate { get; set; }
 
         [Required(ErrorMessage = "El estado de la auditoría es obligatorio")]
+        public int AuditStatusId { get; set; }
         public required AuditStatus Status { get; set; }
 
         // Relationships
         [Required(ErrorMessage = "El responsable es obligatorio")]
         public int ResponsibleId { get; set; }
         public Responsible Responsible { get; set; } = null!;
-        public ICollection<Finding> Findings { get; set; } = new List<Finding>();
+        public ICollection<Finding> Findings { get; set; } = [];
     }
 }

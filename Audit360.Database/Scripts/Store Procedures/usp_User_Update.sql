@@ -4,6 +4,7 @@ GO
 
 CREATE OR ALTER PROCEDURE dbo.usp_User_Update
     @Id INT,
+    @Username NVARCHAR(100),
     @Email NVARCHAR(200),
     @FullName NVARCHAR(200),
     @IsActive BIT,
@@ -14,7 +15,8 @@ BEGIN
     SET NOCOUNT ON;
     BEGIN TRY
         UPDATE dbo.Users
-        SET Email = @Email,
+        SET Username = @Username,
+            Email = @Email,
             FullName = @FullName,
             IsActive = @IsActive,
             RoleId = @RoleId

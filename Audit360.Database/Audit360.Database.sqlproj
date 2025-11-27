@@ -64,6 +64,7 @@
     <Folder Include="Scripts\Seed Data" />
     <Folder Include="Scripts\Views" />
     <Folder Include="Scripts\Post-Deployment" />
+    <Folder Include="Scripts\Pre-Deployment" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\Store Procedures\usp_Audit_Create.sql" />
@@ -222,5 +223,9 @@
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Scripts\Post-Deployment\Deploy_All.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Pre-Deployment\Create_Database.sql" />
+    <None Include="Scripts\Pre-Deployment\Create_Schema_Entities.sql" />
   </ItemGroup>
 </Project>

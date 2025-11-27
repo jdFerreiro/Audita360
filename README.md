@@ -58,7 +58,9 @@ Variables de configuración (mínimas)
 
 Despliegue de base de datos
 1. Crear base de datos destino (ej. `Audit360`).
-2. Ejecutar los scripts del proyecto `Audit360.Database` en el servidor (orden recomendado: vistas/funciones → procedimientos almacenados → seed de datos).
+2. Configurar cadena de conexión en variables de entorno o `appsettings.json`.
+3. Aplicar migraciones EF Core.
+4. Ejecutar los scripts del proyecto `Audit360.Database` en el servidor (orden recomendado: vistas/funciones → procedimientos almacenados → seed de datos).
 
 Ejecución local de la API
 1. Establecer variables de entorno o editar `appsettings.Development.json` con la cadena de conexión y opciones JWT.
@@ -80,12 +82,24 @@ Despliegue en producción (notas rápidas)
 - Configurar HTTPS con certificados válidos y restringir puertos/ACLs.
 - Habilitar logging centralizado (Serilog → sinks) y monitoreo (App Insights / Prometheus).
 
-CI/CD (recomendación)
-- Pipeline mínimo:
-  - Restore → Build → Tests
-  - Ejecutar scripts de DB en entorno de Staging
-  - Publicar artefacto o construir imagen Docker
-  - Desplegar y ejecutar smoke tests
+CI/CD (simulado)
+- Incluido un flujo de CI/CD simulado en `.github/workflows/ci-cd.yml` que ejecuta:
+  1. `dotnet restore`
+  2. `dotnet build --configuration Release`
+  3. `dotnet test` (unidad)
+  4. `dotnet publish` del proyecto `Audit360.API`
+  5. sube el artefacto publicado y realiza un paso de "deploy" simulado (copia de los ficheros publicados a carpeta `artifacts/deploy`)
+
+Ejecutar pipeline localmente (simulación)
+- Build y pruebas locales:
+  - `dotnet restore`
+  - `dotnet build -c Release`
+  - `dotnet test`
+- Publicar API localmente:
+  - `dotnet publish ./Audit360.API/Audit360.API.csproj -c Release -o ./artifacts/publish`
+- Simular deploy con el helper:
+  - `bash tools/ci/deploy.sh`
+  - Esto copiará el contenido de `./artifacts/publish` a `./artifacts/deploy_simulated`.
 
 ---
 
@@ -96,3 +110,5 @@ CI/CD (recomendación)
 - `Audit360.Domain` — Entidades y modelos del dominio
 - `Audit360.Database` — Scripts y definición de la base de datos
 - `Audit360.UnitTests` / `Audit360.IntegrationTests` — pruebas (unitarias e integración)
+
+---

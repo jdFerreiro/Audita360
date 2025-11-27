@@ -7,10 +7,9 @@ using System.Data;
 
 namespace Audit360.Infrastructure.Repositories.Write
 {
-    public class FollowUpWriteRepository : IFollowUpWriteRepository
+    public class FollowUpWriteRepository(Audit360DbContext db) : IFollowUpWriteRepository
     {
-        private readonly Audit360DbContext _db;
-        public FollowUpWriteRepository(Audit360DbContext db) => _db = db;
+        private readonly Audit360DbContext _db = db;
 
         public async Task CreateAsync(FollowUp entity)
         {
@@ -23,7 +22,7 @@ namespace Audit360.Infrastructure.Repositories.Write
             {
                 new SqlParameter("@Description", entity.Description),
                 new SqlParameter("@CommitmentDate", entity.CommitmentDate),
-                new SqlParameter("@StatusId", entity.Status?.Id ?? 0),
+                new SqlParameter("@StatusId", entity.FollowUpStatusId),
                 new SqlParameter("@FindingId", entity.FindingId),
                 newIdParam
             };
@@ -43,7 +42,7 @@ namespace Audit360.Infrastructure.Repositories.Write
                 new SqlParameter("@Id", entity.Id),
                 new SqlParameter("@Description", entity.Description),
                 new SqlParameter("@CommitmentDate", entity.CommitmentDate),
-                new SqlParameter("@StatusId", entity.Status?.Id ?? 0),
+                new SqlParameter("@StatusId", entity.FollowUpStatusId),
                 new SqlParameter("@FindingId", entity.FindingId)
             };
 

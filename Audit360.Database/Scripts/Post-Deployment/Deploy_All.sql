@@ -4,6 +4,10 @@
 
 SET NOCOUNT ON;
 
+-- Crear Base de datos y tablas si no existe (para entornos de prueba)
+:r "..\Pre-Deployment\Create_Database.sql"
+:r "..\Pre-Deployment\Create_Schema_Entities.sql" 
+
 -- Vistas
 :r "..\Views\vw_AuditFinalizedSummary.sql"
 
