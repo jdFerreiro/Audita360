@@ -1,9 +1,9 @@
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Authorization;
-using MediatR;
-using Audit360.Application.Features.Users.Queries;
-using Audit360.Application.Features.Users.Commands;
 using Audit360.Application.Features.Dto.Users;
+using Audit360.Application.Features.Users.Commands;
+using Audit360.Application.Features.Users.Queries;
+using MediatR;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Audit360.API.Controllers
 {
@@ -42,6 +42,7 @@ namespace Audit360.API.Controllers
         /// </summary>
         /// <param name="dto">Datos del usuario a crear.</param>
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> Create([FromBody] UserWriteDto dto)
         {
             await _mediator.Send(new CreateUserCommand(dto));

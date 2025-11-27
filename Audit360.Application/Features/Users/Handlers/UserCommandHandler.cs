@@ -6,6 +6,7 @@ using Audit360.Domain.Entities;
 using System.Threading.Tasks;
 using System.Threading;
 using AutoMapper;
+using Audit360.Application.Interfaces;
 
 namespace Audit360.Application.Features.Users.Handlers
 {
@@ -13,12 +14,20 @@ namespace Audit360.Application.Features.Users.Handlers
     {
         private readonly IUserWriteRepository _writeRepo;
         private readonly IMapper _mapper;
+        private readonly IPasswordService _passwordService;
 
-        public UserCommandHandler(IUserWriteRepository writeRepo, IMapper mapper) => (_writeRepo, _mapper) = (writeRepo, mapper);
+        public UserCommandHandler(IUserWriteRepository writeRepo, IMapper mapper, IPasswordService passwordService) => (_writeRepo, _mapper, _passwordService) = (writeRepo, mapper, passwordService);
 
         public async Task<Unit> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
             var user = _mapper.Map<User>(request.User);
+
+            // Hash password before saving
+            if (!string.IsNullOrWhiteSpace(request.User.Password))
+            {
+                user.PasswordHash = _passwordService.HashPassword(request.User.Password);
+            }
+
             await _writeRepo.CreateAsync(user);
             return Unit.Value;
         }
@@ -27,6 +36,13 @@ namespace Audit360.Application.Features.Users.Handlers
         {
             var user = _mapper.Map<User>(request.User);
             user.Id = request.Id;
+
+            // If a password is provided, hash it before update
+            if (!string.IsNullOrWhiteSpace(request.User.Password))
+            {
+                user.PasswordHash = _passwordService.HashPassword(request.User.Password);
+            }
+
             await _writeRepo.UpdateAsync(user);
             return Unit.Value;
         }

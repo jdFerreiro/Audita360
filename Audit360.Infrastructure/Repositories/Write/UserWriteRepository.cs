@@ -3,7 +3,6 @@ using Audit360.Domain.Entities;
 using Audit360.Infrastructure.Data;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
-using System.Data;
 
 namespace Audit360.Infrastructure.Repositories.Write
 {
@@ -14,11 +13,6 @@ namespace Audit360.Infrastructure.Repositories.Write
 
         public async Task CreateAsync(User entity)
         {
-            var newIdParam = new SqlParameter("@NewId", SqlDbType.Int)
-            {
-                Direction = ParameterDirection.Output
-            };
-
             var parameters = new[]
             {
                 new SqlParameter("@Username", entity.Username),
@@ -26,16 +20,10 @@ namespace Audit360.Infrastructure.Repositories.Write
                 new SqlParameter("@PasswordHash", entity.PasswordHash ?? string.Empty),
                 new SqlParameter("@FullName", entity.FullName),
                 new SqlParameter("@IsActive", entity.IsActive),
-                new SqlParameter("@RoleId", entity.RoleId),
-                newIdParam
+                new SqlParameter("@RoleId", entity.RoleId)
             };
 
-            await _db.Database.ExecuteSqlRawAsync("EXEC usp_User_Create @Username, @Email, @PasswordHash, @FullName, @IsActive, @RoleId, @NewId OUTPUT", parameters);
-
-            if (newIdParam.Value != DBNull.Value && newIdParam.Value != null)
-            {
-                entity.Id = Convert.ToInt32(newIdParam.Value);
-            }
+            await _db.Database.ExecuteSqlRawAsync("EXEC usp_User_Create @Username, @Email, @PasswordHash, @FullName, @IsActive, @RoleId", parameters);
         }
 
         public async Task UpdateAsync(User entity)
