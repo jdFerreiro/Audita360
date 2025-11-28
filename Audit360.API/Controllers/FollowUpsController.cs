@@ -42,6 +42,7 @@ namespace Audit360.API.Controllers
         /// </summary>
         /// <param name="dto">Datos del seguimiento a crear.</param>
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create([FromBody] FollowUpWriteDto dto)
         {
             await _mediator.Send(new CreateFollowUpCommand(dto));
@@ -54,6 +55,7 @@ namespace Audit360.API.Controllers
         /// <param name="id">Identificador del seguimiento a actualizar.</param>
         /// <param name="dto">Datos actualizados del seguimiento.</param>
         [HttpPut("{id:int}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Update(int id, [FromBody] FollowUpWriteDto dto)
         {
             await _mediator.Send(new UpdateFollowUpCommand(id, dto));
@@ -65,6 +67,7 @@ namespace Audit360.API.Controllers
         /// </summary>
         /// <param name="id">Identificador del seguimiento a eliminar.</param>
         [HttpDelete("{id:int}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int id)
         {
             await _mediator.Send(new DeleteFollowUpCommand(id));

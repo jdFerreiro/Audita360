@@ -42,6 +42,7 @@ namespace Audit360.API.Controllers
         /// </summary>
         /// <param name="dto">Datos de la severidad a crear.</param>
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create([FromBody] FindingSeverityWriteDto dto)
         {
             await _mediator.Send(new CreateFindingSeverityCommand(dto));
@@ -54,6 +55,7 @@ namespace Audit360.API.Controllers
         /// <param name="id">Identificador de la severidad a actualizar.</param>
         /// <param name="dto">Datos actualizados de la severidad.</param>
         [HttpPut("{id:int}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Update(int id, [FromBody] FindingSeverityWriteDto dto)
         {
             await _mediator.Send(new UpdateFindingSeverityCommand(id, dto));
@@ -65,6 +67,7 @@ namespace Audit360.API.Controllers
         /// </summary>
         /// <param name="id">Identificador de la severidad a eliminar.</param>
         [HttpDelete("{id:int}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int id)
         {
             await _mediator.Send(new DeleteFindingSeverityCommand(id));

@@ -42,6 +42,7 @@ namespace Audit360.API.Controllers
         /// </summary>
         /// <param name="dto">Datos de la auditoría a crear.</param>
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create([FromBody] AuditWriteDto dto)
         {
             await _mediator.Send(new CreateAuditCommand(dto));
@@ -54,6 +55,7 @@ namespace Audit360.API.Controllers
         /// <param name="id">Identificador de la auditoría a actualizar.</param>
         /// <param name="dto">Datos actualizados de la auditoría.</param>
         [HttpPut("{id:int}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Update(int id, [FromBody] AuditWriteDto dto)
         {
             await _mediator.Send(new UpdateAuditCommand(id, dto));
@@ -65,6 +67,7 @@ namespace Audit360.API.Controllers
         /// </summary>
         /// <param name="id">Identificador de la auditoría a eliminar.</param>
         [HttpDelete("{id:int}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int id)
         {
             await _mediator.Send(new DeleteAuditCommand(id));

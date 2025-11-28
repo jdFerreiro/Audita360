@@ -42,6 +42,7 @@ namespace Audit360.API.Controllers
         /// </summary>
         /// <param name="dto">Datos del tipo a crear.</param>
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create([FromBody] FindingTypeWriteDto dto)
         {
             await _mediator.Send(new CreateFindingTypeCommand(dto));
@@ -54,6 +55,7 @@ namespace Audit360.API.Controllers
         /// <param name="id">Identificador del tipo a actualizar.</param>
         /// <param name="dto">Datos actualizados del tipo.</param>
         [HttpPut("{id:int}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Update(int id, [FromBody] FindingTypeWriteDto dto)
         {
             await _mediator.Send(new UpdateFindingTypeCommand(id, dto));
@@ -65,6 +67,7 @@ namespace Audit360.API.Controllers
         /// </summary>
         /// <param name="id">Identificador del tipo a eliminar.</param>
         [HttpDelete("{id:int}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int id)
         {
             await _mediator.Send(new DeleteFindingTypeCommand(id));

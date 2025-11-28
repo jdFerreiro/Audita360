@@ -55,6 +55,7 @@ namespace Audit360.API.Controllers
         /// <param name="id">Identificador del usuario a actualizar.</param>
         /// <param name="dto">Datos actualizados del usuario.</param>
         [HttpPut("{id:int}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Update(int id, [FromBody] UserWriteDto dto)
         {
             await _mediator.Send(new UpdateUserCommand(id, dto));
@@ -66,6 +67,7 @@ namespace Audit360.API.Controllers
         /// </summary>
         /// <param name="id">Identificador del usuario a eliminar.</param>
         [HttpDelete("{id:int}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int id)
         {
             await _mediator.Send(new DeleteUserCommand(id));
