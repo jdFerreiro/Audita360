@@ -1,50 +1,50 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TestRun id="9663f023-db7d-49fa-901f-38d276221b36" name="fbjda@PC-DAVID 2025-11-28 08:30:31" runUser="PC-DAVID\fbjda" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
-  <Times creation="2025-11-28T08:30:31.8093917-04:00" queuing="2025-11-28T08:30:31.8093922-04:00" start="2025-11-28T08:30:28.7374099-04:00" finish="2025-11-28T08:30:34.2502628-04:00" />
-  <TestSettings name="default" id="f54b7468-7115-4838-9c99-6941d4bed942">
-    <Deployment runDeploymentRoot="fbjda_PC-DAVID_2025-11-28_08_30_31" />
+<TestRun id="49631f6e-4a02-4192-b08d-3f0af963c286" name="fbjda@PC-DAVID 2025-11-28 08:47:40" runUser="PC-DAVID\fbjda" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2025-11-28T08:47:40.7128454-04:00" queuing="2025-11-28T08:47:40.7128459-04:00" start="2025-11-28T08:47:37.5135771-04:00" finish="2025-11-28T08:47:44.8117709-04:00" />
+  <TestSettings name="default" id="330f3d2e-c8b3-4da6-8129-3381c5ac1a6a">
+    <Deployment runDeploymentRoot="fbjda_PC-DAVID_2025-11-28_08_47_40" />
   </TestSettings>
   <Results>
-    <UnitTestResult executionId="a4f03387-2a34-4621-be43-5015a25f808f" testId="ec077618-45bd-c219-3f4f-ce4760047c19" testName="Audit360.IntegrationTests.Repositories.FindingsReadRepositoryIntegrationTests.GetListAndGetById_DoNotThrow_WithSqliteInMemory" computerName="PC-DAVID" duration="00:00:03.0367473" startTime="2025-11-28T08:30:30.8098572-04:00" endTime="2025-11-28T08:30:33.8613954-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a4f03387-2a34-4621-be43-5015a25f808f" />
-    <UnitTestResult executionId="f07eaa6a-2072-418e-a353-e6f1e113fc21" testId="f093aa1a-0fb4-c03e-0247-ea2eb6f3ed02" testName="Audit360.IntegrationTests.Repositories.UserWriteRepositoryIntegrationTests.Create_Update_Delete_DoNotThrow_InMemory_or_HandleRelationalRequirements" computerName="PC-DAVID" duration="00:00:01.5255832" startTime="2025-11-28T08:30:30.8059793-04:00" endTime="2025-11-28T08:30:32.3521472-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f07eaa6a-2072-418e-a353-e6f1e113fc21" />
-    <UnitTestResult executionId="a5b1cb33-3b16-49ed-b650-8868be2b7f2d" testId="ff770c51-2347-fa48-da89-bd01047245b6" testName="Audit360.IntegrationTests.Repositories.AuditWriteRepositoryIntegrationTests.CreateAsync_Works_WithInMemoryDb" computerName="PC-DAVID" duration="00:00:01.5257976" startTime="2025-11-28T08:30:30.8097686-04:00" endTime="2025-11-28T08:30:32.3509352-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a5b1cb33-3b16-49ed-b650-8868be2b7f2d" />
-    <UnitTestResult executionId="6c1787d7-e267-4a0b-9532-51b322c824f6" testId="ae61eda4-750d-bfe5-86dc-13c42dfb3ccf" testName="Audit360.IntegrationTests.UsersEndpointTests.CreateUser_Returns_Conflict_On_Db_FK_Error" computerName="PC-DAVID" duration="00:00:03.2520981" startTime="2025-11-28T08:30:30.8099474-04:00" endTime="2025-11-28T08:30:34.0840805-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="6c1787d7-e267-4a0b-9532-51b322c824f6" />
-    <UnitTestResult executionId="fccae769-3713-458b-8868-a5dfbd4efed5" testId="c6885c5f-648b-ffb3-5ba9-6d8598ee6804" testName="Audit360.IntegrationTests.DatabaseExceptionMiddlewareTests.SqlException_IsHandled_Returns_Conflict" computerName="PC-DAVID" duration="00:00:00.0048063" startTime="2025-11-28T08:30:31.0557094-04:00" endTime="2025-11-28T08:30:31.0559655-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="fccae769-3713-458b-8868-a5dfbd4efed5" />
-    <UnitTestResult executionId="d68acf3b-c0e7-4553-9232-90638756a309" testId="ffb5ed71-fe7e-eb90-6433-d2db84973862" testName="Audit360.IntegrationTests.DatabaseExceptionMiddlewareTests.DbUpdateException_WithInnerSqlException_IsHandled" computerName="PC-DAVID" duration="00:00:00.1745340" startTime="2025-11-28T08:30:30.8096169-04:00" endTime="2025-11-28T08:30:31.0162887-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d68acf3b-c0e7-4553-9232-90638756a309" />
+    <UnitTestResult executionId="fef78bb5-adc3-441d-81bf-053e73f94999" testId="ff770c51-2347-fa48-da89-bd01047245b6" testName="Audit360.IntegrationTests.Repositories.AuditWriteRepositoryIntegrationTests.CreateAsync_Works_WithInMemoryDb" computerName="PC-DAVID" duration="00:00:02.2180821" startTime="2025-11-28T08:47:39.9205910-04:00" endTime="2025-11-28T08:47:42.1341818-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="fef78bb5-adc3-441d-81bf-053e73f94999" />
+    <UnitTestResult executionId="84499684-b747-45a8-923a-977f53341a5b" testId="ffb5ed71-fe7e-eb90-6433-d2db84973862" testName="Audit360.IntegrationTests.DatabaseExceptionMiddlewareTests.DbUpdateException_WithInnerSqlException_IsHandled" computerName="PC-DAVID" duration="00:00:00.2571756" startTime="2025-11-28T08:47:39.9202498-04:00" endTime="2025-11-28T08:47:40.2253930-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="84499684-b747-45a8-923a-977f53341a5b" />
+    <UnitTestResult executionId="2c9a6272-e331-4d5c-b73a-840f808f5393" testId="f093aa1a-0fb4-c03e-0247-ea2eb6f3ed02" testName="Audit360.IntegrationTests.Repositories.UserWriteRepositoryIntegrationTests.Create_Update_Delete_DoNotThrow_InMemory_or_HandleRelationalRequirements" computerName="PC-DAVID" duration="00:00:02.2132533" startTime="2025-11-28T08:47:39.9207090-04:00" endTime="2025-11-28T08:47:42.1325544-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2c9a6272-e331-4d5c-b73a-840f808f5393" />
+    <UnitTestResult executionId="5b1d2b2e-15d5-4300-8d28-5ffeebd3a9c0" testId="ec077618-45bd-c219-3f4f-ce4760047c19" testName="Audit360.IntegrationTests.Repositories.FindingsReadRepositoryIntegrationTests.GetListAndGetById_DoNotThrow_WithSqliteInMemory" computerName="PC-DAVID" duration="00:00:04.5793487" startTime="2025-11-28T08:47:39.9208054-04:00" endTime="2025-11-28T08:47:44.4996135-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5b1d2b2e-15d5-4300-8d28-5ffeebd3a9c0" />
+    <UnitTestResult executionId="f6b3d8ae-b42c-4a45-8e5f-abdd484946f8" testId="c6885c5f-648b-ffb3-5ba9-6d8598ee6804" testName="Audit360.IntegrationTests.DatabaseExceptionMiddlewareTests.SqlException_IsHandled_Returns_Conflict" computerName="PC-DAVID" duration="00:00:00.0056673" startTime="2025-11-28T08:47:40.2949000-04:00" endTime="2025-11-28T08:47:40.2950699-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f6b3d8ae-b42c-4a45-8e5f-abdd484946f8" />
+    <UnitTestResult executionId="04252e9d-6d9c-4358-b539-325f9f3a73c0" testId="ae61eda4-750d-bfe5-86dc-13c42dfb3ccf" testName="Audit360.IntegrationTests.UsersEndpointTests.CreateUser_Returns_Conflict_On_Db_FK_Error" computerName="PC-DAVID" duration="00:00:04.6115483" startTime="2025-11-28T08:47:39.9121740-04:00" endTime="2025-11-28T08:47:44.5342681-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="04252e9d-6d9c-4358-b539-325f9f3a73c0" />
   </Results>
   <TestDefinitions>
     <UnitTest name="Audit360.IntegrationTests.Repositories.FindingsReadRepositoryIntegrationTests.GetListAndGetById_DoNotThrow_WithSqliteInMemory" storage="d:\personales\evaluaciones técnicas\proyecto\audit360\audit360.integrationtests\bin\debug\net10.0\audit360.integrationtests.dll" id="ec077618-45bd-c219-3f4f-ce4760047c19">
-      <Execution id="a4f03387-2a34-4621-be43-5015a25f808f" />
+      <Execution id="5b1d2b2e-15d5-4300-8d28-5ffeebd3a9c0" />
       <TestMethod codeBase="D:\Personales\Evaluaciones Técnicas\Proyecto\Audit360\Audit360.IntegrationTests\bin\Debug\net10.0\Audit360.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Audit360.IntegrationTests.Repositories.FindingsReadRepositoryIntegrationTests" name="GetListAndGetById_DoNotThrow_WithSqliteInMemory" />
     </UnitTest>
     <UnitTest name="Audit360.IntegrationTests.DatabaseExceptionMiddlewareTests.SqlException_IsHandled_Returns_Conflict" storage="d:\personales\evaluaciones técnicas\proyecto\audit360\audit360.integrationtests\bin\debug\net10.0\audit360.integrationtests.dll" id="c6885c5f-648b-ffb3-5ba9-6d8598ee6804">
-      <Execution id="fccae769-3713-458b-8868-a5dfbd4efed5" />
+      <Execution id="f6b3d8ae-b42c-4a45-8e5f-abdd484946f8" />
       <TestMethod codeBase="D:\Personales\Evaluaciones Técnicas\Proyecto\Audit360\Audit360.IntegrationTests\bin\Debug\net10.0\Audit360.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Audit360.IntegrationTests.DatabaseExceptionMiddlewareTests" name="SqlException_IsHandled_Returns_Conflict" />
     </UnitTest>
     <UnitTest name="Audit360.IntegrationTests.UsersEndpointTests.CreateUser_Returns_Conflict_On_Db_FK_Error" storage="d:\personales\evaluaciones técnicas\proyecto\audit360\audit360.integrationtests\bin\debug\net10.0\audit360.integrationtests.dll" id="ae61eda4-750d-bfe5-86dc-13c42dfb3ccf">
-      <Execution id="6c1787d7-e267-4a0b-9532-51b322c824f6" />
+      <Execution id="04252e9d-6d9c-4358-b539-325f9f3a73c0" />
       <TestMethod codeBase="D:\Personales\Evaluaciones Técnicas\Proyecto\Audit360\Audit360.IntegrationTests\bin\Debug\net10.0\Audit360.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Audit360.IntegrationTests.UsersEndpointTests" name="CreateUser_Returns_Conflict_On_Db_FK_Error" />
     </UnitTest>
     <UnitTest name="Audit360.IntegrationTests.Repositories.UserWriteRepositoryIntegrationTests.Create_Update_Delete_DoNotThrow_InMemory_or_HandleRelationalRequirements" storage="d:\personales\evaluaciones técnicas\proyecto\audit360\audit360.integrationtests\bin\debug\net10.0\audit360.integrationtests.dll" id="f093aa1a-0fb4-c03e-0247-ea2eb6f3ed02">
-      <Execution id="f07eaa6a-2072-418e-a353-e6f1e113fc21" />
+      <Execution id="2c9a6272-e331-4d5c-b73a-840f808f5393" />
       <TestMethod codeBase="D:\Personales\Evaluaciones Técnicas\Proyecto\Audit360\Audit360.IntegrationTests\bin\Debug\net10.0\Audit360.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Audit360.IntegrationTests.Repositories.UserWriteRepositoryIntegrationTests" name="Create_Update_Delete_DoNotThrow_InMemory_or_HandleRelationalRequirements" />
     </UnitTest>
     <UnitTest name="Audit360.IntegrationTests.Repositories.AuditWriteRepositoryIntegrationTests.CreateAsync_Works_WithInMemoryDb" storage="d:\personales\evaluaciones técnicas\proyecto\audit360\audit360.integrationtests\bin\debug\net10.0\audit360.integrationtests.dll" id="ff770c51-2347-fa48-da89-bd01047245b6">
-      <Execution id="a5b1cb33-3b16-49ed-b650-8868be2b7f2d" />
+      <Execution id="fef78bb5-adc3-441d-81bf-053e73f94999" />
       <TestMethod codeBase="D:\Personales\Evaluaciones Técnicas\Proyecto\Audit360\Audit360.IntegrationTests\bin\Debug\net10.0\Audit360.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Audit360.IntegrationTests.Repositories.AuditWriteRepositoryIntegrationTests" name="CreateAsync_Works_WithInMemoryDb" />
     </UnitTest>
     <UnitTest name="Audit360.IntegrationTests.DatabaseExceptionMiddlewareTests.DbUpdateException_WithInnerSqlException_IsHandled" storage="d:\personales\evaluaciones técnicas\proyecto\audit360\audit360.integrationtests\bin\debug\net10.0\audit360.integrationtests.dll" id="ffb5ed71-fe7e-eb90-6433-d2db84973862">
-      <Execution id="d68acf3b-c0e7-4553-9232-90638756a309" />
+      <Execution id="84499684-b747-45a8-923a-977f53341a5b" />
       <TestMethod codeBase="D:\Personales\Evaluaciones Técnicas\Proyecto\Audit360\Audit360.IntegrationTests\bin\Debug\net10.0\Audit360.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Audit360.IntegrationTests.DatabaseExceptionMiddlewareTests" name="DbUpdateException_WithInnerSqlException_IsHandled" />
     </UnitTest>
   </TestDefinitions>
   <TestEntries>
-    <TestEntry testId="ec077618-45bd-c219-3f4f-ce4760047c19" executionId="a4f03387-2a34-4621-be43-5015a25f808f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
-    <TestEntry testId="f093aa1a-0fb4-c03e-0247-ea2eb6f3ed02" executionId="f07eaa6a-2072-418e-a353-e6f1e113fc21" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
-    <TestEntry testId="ff770c51-2347-fa48-da89-bd01047245b6" executionId="a5b1cb33-3b16-49ed-b650-8868be2b7f2d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
-    <TestEntry testId="ae61eda4-750d-bfe5-86dc-13c42dfb3ccf" executionId="6c1787d7-e267-4a0b-9532-51b322c824f6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
-    <TestEntry testId="c6885c5f-648b-ffb3-5ba9-6d8598ee6804" executionId="fccae769-3713-458b-8868-a5dfbd4efed5" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
-    <TestEntry testId="ffb5ed71-fe7e-eb90-6433-d2db84973862" executionId="d68acf3b-c0e7-4553-9232-90638756a309" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ff770c51-2347-fa48-da89-bd01047245b6" executionId="fef78bb5-adc3-441d-81bf-053e73f94999" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ffb5ed71-fe7e-eb90-6433-d2db84973862" executionId="84499684-b747-45a8-923a-977f53341a5b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f093aa1a-0fb4-c03e-0247-ea2eb6f3ed02" executionId="2c9a6272-e331-4d5c-b73a-840f808f5393" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ec077618-45bd-c219-3f4f-ce4760047c19" executionId="5b1d2b2e-15d5-4300-8d28-5ffeebd3a9c0" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c6885c5f-648b-ffb3-5ba9-6d8598ee6804" executionId="f6b3d8ae-b42c-4a45-8e5f-abdd484946f8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ae61eda4-750d-bfe5-86dc-13c42dfb3ccf" executionId="04252e9d-6d9c-4358-b539-325f9f3a73c0" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
   </TestEntries>
   <TestLists>
     <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
@@ -54,15 +54,15 @@
     <Counters total="6" executed="6" passed="6" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
     <Output>
       <StdOut>[xUnit.net 00:00:00.01] xUnit.net VSTest Adapter v3.1.5+1b188a7b0a (64-bit .NET 10.0.0)&#xD;
-[xUnit.net 00:00:00.29]   Discovering: Audit360.IntegrationTests&#xD;
-[xUnit.net 00:00:00.43]   Discovered:  Audit360.IntegrationTests&#xD;
-[xUnit.net 00:00:00.50]   Starting:    Audit360.IntegrationTests&#xD;
+[xUnit.net 00:00:00.39]   Discovering: Audit360.IntegrationTests&#xD;
+[xUnit.net 00:00:00.57]   Discovered:  Audit360.IntegrationTests&#xD;
+[xUnit.net 00:00:00.66]   Starting:    Audit360.IntegrationTests&#xD;
 warn: Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware[3]&#xD;
       Failed to determine the https port for redirect.&#xD;
 warn: LuckyPennySoftware.MediatR.License[0]&#xD;
       You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.&#xD;
 fail: Microsoft.EntityFrameworkCore.Database.Command[20102]&#xD;
-      Failed executing DbCommand (71ms) [Parameters=[@Username='?' (Size = 8), @Email='?' (Size = 16), @PasswordHash='?' (Size = 60), @FullName='?' (Size = 4), @IsActive='?' (DbType = Boolean), @RoleId='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']&#xD;
+      Failed executing DbCommand (100ms) [Parameters=[@Username='?' (Size = 8), @Email='?' (Size = 16), @PasswordHash='?' (Size = 60), @FullName='?' (Size = 4), @IsActive='?' (DbType = Boolean), @RoleId='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']&#xD;
       EXEC usp_User_Create @Username, @Email, @PasswordHash, @FullName, @IsActive, @RoleId&#xD;
 fail: Audit360.API.Middleware.DatabaseExceptionMiddleware[0]&#xD;
       Database SQL error occurred (simulated or real). Number: 8144&#xD;
@@ -99,9 +99,9 @@ fail: Audit360.API.Middleware.DatabaseExceptionMiddleware[0]&#xD;
          at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)&#xD;
          at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)&#xD;
          at Audit360.API.Middleware.DatabaseExceptionMiddleware.InvokeAsync(HttpContext context) in D:\Personales\Evaluaciones T�cnicas\Proyecto\Audit360\Audit360.API\Middleware\DatabaseExceptionMiddleware.cs:line 24&#xD;
-      ClientConnectionId:f55969de-06dd-4d2e-812c-a9e83f08ddc3&#xD;
+      ClientConnectionId:8c77c2c5-0806-47c1-8a6b-e8faacae7c81&#xD;
       Error Number:8144,State:2,Class:16&#xD;
-[xUnit.net 00:00:03.87]   Finished:    Audit360.IntegrationTests&#xD;
+[xUnit.net 00:00:05.45]   Finished:    Audit360.IntegrationTests&#xD;
 </StdOut>
     </Output>
   </ResultSummary>
