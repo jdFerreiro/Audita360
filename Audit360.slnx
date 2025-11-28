@@ -12,11 +12,7 @@
     </Project>
   </Folder>
   <Folder Name="/Test/">
-    <Project Path="Audit360.IntegrationTests/Audit360.IntegrationTests.csproj">
-      <Build Solution="Debug|*" Project="false" />
-    </Project>
-    <Project Path="Audit360.UnitTests/Audit360.UnitTests.csproj">
-      <Build Solution="Debug|*" Project="false" />
-    </Project>
+    <Project Path="Audit360.IntegrationTests/Audit360.IntegrationTests.csproj" />
+    <Project Path="Audit360.UnitTests/Audit360.UnitTests.csproj" />
   </Folder>
 </Solution>

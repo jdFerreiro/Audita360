@@ -24,7 +24,8 @@ namespace Audit360.UnitTests.Handlers
             mockRepo.Setup(r => r.GetByEmailAsync(It.IsAny<string>())).ReturnsAsync(user);
             mockPassword.Setup(p => p.Verify(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
 
-            var jwtOptions = new JwtOptions { Secret = "verysecretkeyverysecretkey", Issuer = "issuer", Audience = "aud" };
+            // Ensure secret is sufficiently long for HS256 (greater than 256 bits)
+            var jwtOptions = new JwtOptions { Secret = new string('A', 64), Issuer = "issuer", Audience = "aud" };
 
             var handler = new AuthenticateUserHandler(mockRepo.Object, mockPassword.Object, jwtOptions);
 

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuites>
+  <testsuite name="Audit360.Tests" tests="6" failures="0" errors="0" time="13.8850753">
+    <testcase classname="Audit360.IntegrationTests.Repositories.AuditWriteRepositoryIntegrationTests" name="CreateAsync_Works_WithInMemoryDb" time="2.2180821"/>
+    <testcase classname="Audit360.IntegrationTests.DatabaseExceptionMiddlewareTests" name="DbUpdateException_WithInnerSqlException_IsHandled" time="0.2571756"/>
+    <testcase classname="Audit360.IntegrationTests.Repositories.UserWriteRepositoryIntegrationTests" name="Create_Update_Delete_DoNotThrow_InMemory_or_HandleRelationalRequirements" time="2.2132533"/>
+    <testcase classname="Audit360.IntegrationTests.Repositories.FindingsReadRepositoryIntegrationTests" name="GetListAndGetById_DoNotThrow_WithSqliteInMemory" time="4.5793487"/>
+    <testcase classname="Audit360.IntegrationTests.DatabaseExceptionMiddlewareTests" name="SqlException_IsHandled_Returns_Conflict" time="0.0056673"/>
+    <testcase classname="Audit360.IntegrationTests.UsersEndpointTests" name="CreateUser_Returns_Conflict_On_Db_FK_Error" time="4.6115483"/>
+  </testsuite>
+</testsuites>
