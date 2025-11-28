@@ -1,0 +1,31 @@
+image: mcr.microsoft.com/dotnet/sdk:6.0
+
+stages:
+  - build
+  - deploy
+
+variables:
+  DOTNET_CLI_TELEMETRY_OPTOUT: "1"
+  DOTNET_USE_POLLING_FILE_WATCHER: "1"
+  BUILD_CONFIGURATION: "Release"
+
+build_job:
+  stage: build
+  script:
+    - dotnet restore
+    - dotnet build --configuration $BUILD_CONFIGURATION --no-restore
+    - dotnet test --no-build --verbosity normal
+    - dotnet publish ./Audit360.API/Audit360.API.csproj -c $BUILD_CONFIGURATION -o ./artifacts/publish
+  artifacts:
+    paths:
+      - artifacts/publish
+    expire_in: 1 week
+
+deploy_job:
+  stage: deploy
+  script:
+    - chmod +x Entregables/deploy_simulated.sh
+    - Entregables/deploy_simulated.sh
+  dependencies:
+    - build_job
+  when: on_success

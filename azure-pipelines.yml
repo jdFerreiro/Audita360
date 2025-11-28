@@ -1,0 +1,65 @@
+trigger:
+  branches:
+    include:
+      - master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  buildConfiguration: 'Release'
+
+stages:
+  - stage: Build
+    displayName: 'Build'
+    jobs:
+      - job: BuildAndTest
+        displayName: 'Restore, Build, Test and Publish'
+        steps:
+          - task: UseDotNet@2
+            displayName: 'Use .NET'
+            inputs:
+              packageType: 'sdk'
+              version: '10.0.x'
+
+          - script: dotnet restore
+            displayName: 'Restore'
+
+          - script: dotnet build --configuration $(buildConfiguration) --no-restore
+            displayName: 'Build'
+
+          - script: dotnet test --no-build --verbosity normal
+            displayName: 'Run unit tests'
+
+          - script: |
+              dotnet publish ./Audit360.API/Audit360.API.csproj -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory)/publish
+            displayName: 'Publish API'
+
+          - task: PublishBuildArtifacts@1
+            inputs:
+              PathtoPublish: '$(Build.ArtifactStagingDirectory)/publish'
+              ArtifactName: 'audit360-artifact'
+              publishLocation: 'Container'
+
+  - stage: Deploy
+    displayName: 'Deploy'
+    dependsOn: Build
+    condition: succeeded()
+    jobs:
+      - deployment: SimulatedDeploy
+        displayName: 'Simulated Deploy'
+        environment: 'simulated'
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - download: current
+                  artifact: 'audit360-artifact'
+
+                - script: |
+                    chmod +x Entregables/deploy_simulated.sh
+                    Entregables/deploy_simulated.sh
+                  displayName: 'Run simulated deploy script'
+
+                - script: echo 'Simulated deployment finished'
+                  displayName: 'Notify'
