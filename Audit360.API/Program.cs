@@ -56,6 +56,9 @@ builder.Services.AddScoped<IFindingSeverityWriteRepository, FindingSeverityWrite
 builder.Services.AddScoped<IFollowUpStatusReadRepository, FollowUpStatusReadRepository>();
 builder.Services.AddScoped<IFollowUpStatusWriteRepository, FollowUpStatusWriteRepository>();
 
+// Register new summary repository
+builder.Services.AddScoped<IAuditFinalizedSummaryReadRepository, AuditFinalizedSummaryReadRepository>();
+
 // AutoMapper - use extension to register profiles from Application mapping assembly
 builder.Services.AddAutoMapper(typeof(DomainToDtoProfile).Assembly);
 

@@ -28,6 +28,7 @@ namespace Audit360.Application.Mapping
             CreateMap<FindingType, FindingTypeReadDto>();
             CreateMap<FindingSeverity, FindingSeverityReadDto>();
             CreateMap<FollowUpStatus, FollowUpStatusReadDto>();
+            CreateMap<AuditFinalizedSummary, AuditFinalizedSummaryReadDto>();
         }
     }
 }

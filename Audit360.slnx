@@ -11,6 +11,11 @@
       <Deploy />
     </Project>
   </Folder>
+  <Folder Name="/Entregables/">
+    <File Path="../../Audit360.API.postman_collection.json" />
+    <File Path="../../Diagramas/Diagrama Conceptual.PNG" />
+    <File Path="../../Diagramas/Diagrama de Arquitectura.PNG" />
+  </Folder>
   <Folder Name="/Test/">
     <Project Path="Audit360.IntegrationTests/Audit360.IntegrationTests.csproj">
       <Build Solution="Debug|*" Project="false" />
